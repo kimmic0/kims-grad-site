@@ -319,6 +319,13 @@ footer p {font-size: 1.2em; color: var(--bw-4); margin: 5px 0; animation: neonPu
 
 /* Phones / very small screens */
 @media (max-width: 500px){
+  #launch-screen h1 {
+    font-size: 1.5rem;  /* smaller for mobile */
+    line-height: 1.2;   /* wrap nicely */
+  }
+  #launch-screen p {
+    font-size: 0.9rem;
+  }
   h1 { font-size: 2rem; }
   h2 { font-size: 1.6rem; }
   p { font-size: 1rem; }
@@ -458,6 +465,8 @@ body {
  .tabs, footer, #journey.tab-content {
   width: 100%;
   max-width: 100%;
+  margin-left: 0; /* remove calc(50%-50vw) for mobile */
+  box-sizing: border-box;
 }
 
 /* Ensure tab bar spans edge-to-edge */
@@ -1022,3 +1031,4 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
