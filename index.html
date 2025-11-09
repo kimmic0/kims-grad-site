@@ -70,6 +70,7 @@
 
 #launch-screen p {
   font-family: 'Alumni Sans', sans-serif;
+  max-width: 90%;
   font-size: 1.5rem;
   letter-spacing: 1px;
   color: #ddd;
@@ -104,7 +105,7 @@
 }
 body { font-family: 'Alumni Sans'; font-size: 20px; background-color:var(--bw-4); margin:0; color:var(--bw-1); text-align:center; }
 header { padding:40px 20px 20px; border-bottom:2px solid var(--bw-1); background-color:var(--bw-4); }
-h1 { font-family:'Monsieur La Doulaise', cursive; font-size:20px; margin:0; letter-spacing:1px; }
+h1 { font-family:'Monsieur La Doulaise', cursive; font-size:20px; margin:0; letter-spacing:1px; max-width: 90%;}
 h1 img { display:block; margin:10px auto 0; width:60px; height:auto; }
 p { font-size:30px; color:#333; font-weight: bold; margin-top:10px; margin-right:15px }
 h2 {  font-size: 38px;  font-family: 'Alumni Sans', sans-serif;  margin-bottom: 20px;}
@@ -131,7 +132,8 @@ button:hover { animation:shine 1.3s linear infinite; transform:scale(1.05); }
 /* --- Main / Journey canvas --- */
 #main-content { transition:background .5s ease; position:relative; z-index:1; min-height:400px; }
 .journey-active { background-color:var(--bw-1); color:var(--bw-4); }
-.journey-bg { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none;background: transparent;  opacity: 0; transition: opacity 0.4s ease;}
+.journey-bg { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none;background: transparent;  opacity: 0; transition: opacity 0.4s ease;
+             margin: 0; padding: 0;  border: 0;}
 .journey-active .journey-bg {opacity: 1;}
 /* --- Timeline --- */
 .timeline-container {
@@ -491,6 +493,8 @@ body {
 footer {
   width: 100vw;
   margin-left: calc(50% - 50vw);
+      margin: 0;
+    border-top: 0;
 }
 </style>
 </head>
@@ -1031,4 +1035,5 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
