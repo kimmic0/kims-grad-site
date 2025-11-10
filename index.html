@@ -471,6 +471,27 @@ footer p {
     font-size: 34px !important;
   }
 }
+/* ✅ NEVER cut off paragraphs or tab content */
+.tab-content {
+  max-width: 100% !important;      /* remove artificial limit */
+  width: 100% !important;
+  overflow: visible !important;    /* allow content to grow */
+  height: auto !important;         /* full expand */
+  display: block;
+}
+
+/* ✅ Prevent container clipping on mobile */
+#main-content {
+  overflow: visible !important;
+  height: auto !important;
+}
+
+/* ✅ Allow long paragraphs to wrap cleanly */
+p, h2, h1, .tab-content p {
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+}
 
 /* End of CSS */
 </style>
@@ -896,5 +917,6 @@ window.onload=()=>{
 
 </body>
 </html>
+
 
 
