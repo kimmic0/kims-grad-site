@@ -506,6 +506,23 @@ footer p {
     gap: 4px;
   }
 }
+/* ✅ Mobile: sidebar should NEVER block taps */
+@media (max-width: 900px) {
+  #achievement-sidebar {
+    pointer-events: none !important;
+  }
+  #achievement-sidebar * {
+    pointer-events: none !important;
+  }
+}
+
+/* ✅ Desktop: sidebar works normally */
+@media (hover: hover) {
+  #achievement-sidebar,
+  #achievement-sidebar * {
+    pointer-events: auto !important;
+  }
+}
 
 /* End of CSS */
 </style>
@@ -1061,6 +1078,7 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
 
 
