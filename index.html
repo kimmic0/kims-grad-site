@@ -859,111 +859,209 @@ document.querySelectorAll(".point").forEach(point=>{
   });
 });
 
-/* -------------------- Optimized Cursor & Touch Bow Trail -------------------- */
+// -------------------- Cursor trail (kept intact) --------------------
+const blackBow='https://media.tenor.com/eGCjV7lEokoAAAAj/black-bow.gif';
+const whiteBow='invertedwhitebow.gif'; // keep this in your folder or change to a hosted white-gif
 
-const blackBow = "https://media.tenor.com/eGCjV7lEokoAAAAj/black-bow.gif";
-const whiteBow = "invertedwhitebow.gif"; // your white gif (local or hosted)
-
-/* ✅ Strong background color reader */
-function getBgColor(elem) {
-  while (elem) {
-    const style = window.getComputedStyle(elem);
-
-    // Solid background color
-    if (style.backgroundColor !== "rgba(0, 0, 0, 0)" &&
-        style.backgroundColor !== "transparent") {
-      return style.backgroundColor;
-    }
-
-    // If there's a background image → assume dark
-    if (style.backgroundImage !== "none") return "rgb(0,0,0)";
-
+function getBgColor(elem){
+  while(elem){
+    const color = window.getComputedStyle(elem).backgroundColor;
+    if(color && color !== 'rgba(0, 0, 0, 0)' && color !== 'transparent') return color;
     elem = elem.parentElement;
   }
-  return "rgb(255,255,255)";
+  return 'rgb(255,255,255)';
 }
-
-/* ✅ Accurate luminance calculation */
-function getLuminance(rgb) {
+function getLuminance(rgb){
   const m = rgb.match(/(\d+),\s*(\d+),\s*(\d+)/);
-  if (!m) return 255;
-  const r = +m[1], g = +m[2], b = +m[3];
-  return 0.299 * r + 0.587 * g + 0.114 * b;
+  if(!m) return 255;
+  const r = parseInt(m[1]), g = parseInt(m[2]), b = parseInt(m[3]);
+  return 0.299*r + 0.587*g + 0.114*b;
 }
-
-/* ✅ Shared bow spawn function (used by both mouse + touch) */
-function spawnBowTrail(x, y) {
-  const targetElem = document.elementFromPoint(x, y);
-  const bgColor = getBgColor(targetElem);
-  const isDark = getLuminance(bgColor) < 128;
-
-  const bow = document.createElement("img");
-  bow.src = isDark ? whiteBow : blackBow;
-
-  bow.style.position = "absolute";
-  bow.style.left = x - 12 + "px";
-  bow.style.top = y - 12 + "px";
-  bow.style.width = "25px";
-  bow.style.height = "25px";
-  bow.style.pointerEvents = "none";
-  bow.style.zIndex = 9999;
-  bow.style.opacity = "1";
-  bow.style.transition = "opacity .7s ease-out, transform .7s ease-out";
-
-  document.body.appendChild(bow);
-
-  // Smooth fade-out and scale
-  requestAnimationFrame(() => {
-    bow.style.opacity = "0";
-    bow.style.transform = "scale(0.6) rotate(18deg)";
-  });
-
-  // Clean removal to prevent memory leaks
-  setTimeout(() => bow.remove(), 800);
-}
-
-/* ✅ Desktop mouse trail */
-document.addEventListener("mousemove", (e) => {
-  spawnBowTrail(e.clientX, e.clientY);
+document.addEventListener('mousemove', e => {
+  const img = document.createElement('img');
+  img.src = (getLuminance(getBgColor(document.elementFromPoint(e.clientX, e.clientY))) < 128) ? whiteBow : blackBow;
+  img.style.position = 'absolute';
+  img.style.left = e.pageX - 12 + 'px';
+  img.style.top = e.pageY - 12 + 'px';
+  img.style.width = '25px';
+  img.style.height = '25px';
+  img.style.pointerEvents = 'none';
+  img.style.zIndex = 9999;
+  img.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
+  img.style.opacity = '1';
+  document.body.appendChild(img);
+  setTimeout(()=>{ img.style.opacity='0'; img.style.transform='scale(0.6) rotate(20deg)'; setTimeout(()=>img.remove(),1000); }, 0);
 });
 
-/* ✅ Mobile touch trail (the key to restoring old behavior) */
-document.addEventListener(
-  "touchmove",
-  (e) => {
-    const t = e.touches[0];
-    if (!t) return;
-    spawnBowTrail(t.clientX, t.clientY);
-  },
-  { passive: true } // ✅ prevents blocking taps or scrolling
-);
+document.addEventListener('touchmove', e => {
+  const touch = e.touches[0];
+  if(!touch) return;
 
-/* -------------------- Invitation Screen -------------------- */
-const screen=document.getElementById("launch-screen");
-screen.onclick=()=>{
-  screen.style.animation="fadeOut 1s forwards";
-  setTimeout(()=>{
-    screen.remove();
-    unlockAchievement("Hello, World!");
-  },500);
-};
+  const img = document.createElement('img');
+  img.src = (getLuminance(getBgColor(document.elementFromPoint(touch.clientX, touch.clientY))) < 128) ? whiteBow : blackBow;
+  img.style.position = 'absolute';
+  img.style.left = touch.pageX - 12 + 'px';
+  img.style.top = touch.pageY - 12 + 'px';
+  img.style.width = '25px';
+  img.style.height = '25px';
+  img.style.pointerEvents = 'none';
+  img.style.zIndex = 9999;
+  img.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
+  img.style.opacity = '1';
+  document.body.appendChild(img);
+  setTimeout(() => {
+    img.style.opacity = '0';
+    img.style.transform = 'scale(0.6) rotate(20deg)';
+    setTimeout(() => img.remove(), 1000);
+  }, 0);
+}, { passive: true }); // passive: true allows finger scrolling
 
-/* -------------------- Init -------------------- */
-window.onload=()=>{
+
+// -------------------- Timeline points (unlock on hover) --------------------
+const timelinePoints = document.querySelectorAll('.point');
+timelinePoints.forEach(point => {
+  point.addEventListener('mouseenter', () => {
+    const img = document.getElementById('journey-img');
+    const desc = document.getElementById('journey-desc');
+    img.src = point.getAttribute('data-img');
+    desc.textContent = point.getAttribute('data-desc');
+    img.style.display = 'block';
+    unlockAchievement('Process Tracker');
+  });
+
+  point.addEventListener('mouseleave', () => {
+    const img = document.getElementById('journey-img');
+    const desc = document.getElementById('journey-desc');
+    img.style.display = 'none';
+    desc.textContent = '';
+  });
+});
+
+function positionLEDsInsidePoints() {
+  const points = document.querySelectorAll('.point');
+
+  // Remove old LEDs
+  document.querySelectorAll('.point .timeline-led').forEach(l => l.remove());
+
+  points.forEach(point => {
+    const led = document.createElement('div');
+    led.className = 'timeline-led';
+    led.style.position = 'absolute';
+    led.style.zIndex = '0'; // behind point
+    led.style.width = '16px';
+    led.style.height = '16px';
+    
+    // Position LED centered inside point
+    led.style.left = '50%';
+    led.style.top = '50%';
+    led.style.transform = 'translate(-50%, -50%)';
+
+    point.appendChild(led); // append LED inside the point
+  });
+}
+
+positionLEDsInsidePoints();
+window.addEventListener('resize', positionLEDsInsidePoints);
+let pulseTime = 0;
+function pulseTimelineLEDsSmooth(timestamp){
+  const leds = document.querySelectorAll('.timeline-led');
+  if(leds.length === 0) return;
+
+  pulseTime += 0.02; // speed of pulse
+  leds.forEach((led, i)=>{
+    const phase = (i / leds.length) * Math.PI * 2;
+    const scale = 1 + 0.3 * Math.sin(pulseTime + phase);
+    const opacity = 0.3 + 0.7 * Math.sin(pulseTime + phase) ** 2;
+    led.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    led.style.opacity = opacity;
+    // optional: animate box-shadow for glow intensity
+    const glow = 6 + 6 * Math.sin(pulseTime + phase);
+    led.style.boxShadow = `0 0 ${14+glow}px ${glow}px rgba(255,255,255,0.5)`;
+  });
+
+  requestAnimationFrame(pulseTimelineLEDsSmooth);
+}
+
+requestAnimationFrame(pulseTimelineLEDsSmooth);
+
+
+// -------------------- Canvas 'PCB' (keeps visuals) --------------------
+const canvas = document.getElementById('journey-bg');
+const ctx = canvas?.getContext ? canvas.getContext('2d') : null;
+let particles = [];
+function resizeCanvas(){
+  if(!canvas) return;
+  canvas.width = document.getElementById('main-content').offsetWidth;
+  canvas.height = document.getElementById('main-content').offsetHeight;
+  generateParticles();
+  drawPCB();
+}
+window.addEventListener('resize', resizeCanvas);
+function generateParticles(){
+  particles = [];
+  for(let i=0;i<50;i++){
+    particles.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, length: 20+Math.random()*50, vertical: Math.random()<0.5, speed:1+Math.random()*1.5});
+  }
+}
+function drawPCB(){
+  if(!ctx) return;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(const p of particles){
+    ctx.strokeStyle = 'rgba(255,255,255,' + (0.9 + Math.random()*0.12) + ')';
+    ctx.lineWidth = 1 + Math.random()*1;
+    ctx.beginPath();
+    if(p.vertical) ctx.moveTo(p.x,p.y), ctx.lineTo(p.x,p.y+p.length);
+    else ctx.moveTo(p.x,p.y), ctx.lineTo(p.x+p.length,p.y);
+    ctx.stroke();
+  }
+}
+function animatePCB(){
+  drawPCB();
+  for(const p of particles){
+    if(p.vertical){ p.y += p.speed; if(p.y > canvas.height) p.y = -p.length; }
+    else { p.x += p.speed; if(p.x > canvas.width) p.x = -p.length; }
+  }
+  requestAnimationFrame(animatePCB);
+}
+animatePCB();
+// -------------------- Init on load --------------------
+window.onload = () => {
   renderMessages();
-  setupLightbox();
+  renderGallery();
+  resizeCanvas();
+
 };
+// --- Invitation Launch Screen ---
+const launchScreen = document.getElementById('launch-screen');
+launchScreen.addEventListener('click', () => {
+  launchScreen.style.animation = 'fadeOut 1s forwards';
+  setTimeout(() => {
+    launchScreen.remove();
+    unlockAchievement('Hello, World!'); // trigger welcome achievement
+  }, 500);
+});
 
 </script>
-
-<!-- ACHIEVEMENTS SIDEBAR -->
+<!-- 🎮 Minecraft-style Achievement Sidebar -->
 <div id="achievement-sidebar">
-  <h3 style="text-align:center;font-size:14px;">Achievements</h3>
-  <div id="achievements-list"></div>
+  <div id="achievements-unlocked">
+    <h3>Achievements</h3>
+    <div id="achievements-list"></div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="achievement-list"></div>
 </div>
 
+<!-- Popup for unlock -->
+<div id="achievement-popup">
+  <div id="achievement-popup-inner">
+    <span id="achievement-popup-title">Achievement Get!</span>
+    <span id="achievement-popup-text"></span>
+  </div>
+</div>
 </body>
 </html>
+
 
 
 
