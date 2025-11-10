@@ -380,7 +380,7 @@ footer p {
 /* === Achievements Sidebar === */
 #achievement-sidebar {
   position: fixed;
-  top: 100px;
+  top: 220px;
   right: 0;
   width: 40px;
   background: linear-gradient(#111, #000);
@@ -480,16 +480,18 @@ footer p {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-/* ✅ Prevent achievements sidebar from blocking tab clicks */
+/* ✅ Prevent sidebar from blocking mobile taps */
 #achievement-sidebar,
 #achievement-sidebar * {
-  pointer-events: none !important;   /* sidebar + children non-touchable */
+  pointer-events: none !important;
 }
 
 /* ✅ Re-enable interaction ONLY on desktop hover */
-#achievement-sidebar:hover,
-#achievement-sidebar:hover * {
-  pointer-events: auto !important;
+@media (hover: hover) {
+  #achievement-sidebar:hover,
+  #achievement-sidebar:hover * {
+    pointer-events: auto !important;
+  }
 }
 
 /* End of CSS */
@@ -916,3 +918,4 @@ window.onload=()=>{
 
 </body>
 </html>
+
