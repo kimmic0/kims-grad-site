@@ -530,19 +530,6 @@ footer p {
     padding: 8px !important;
   }
 }
-/* ✅ Mobile tap-to-open sidebar */
-const sidebar = document.getElementById("achievement-sidebar");
-
-function isMobile() {
-  return window.matchMedia("(max-width: 600px)").matches;
-}
-
-sidebar.addEventListener("click", () => {
-  if (!isMobile()) return;  // desktop uses hover only
-
-  sidebar.classList.toggle("mobile-open");
-});
-
 /* End of CSS */
 </style>
 </head>
@@ -1076,6 +1063,18 @@ launchScreen.addEventListener('click', () => {
     unlockAchievement('Hello, World!'); // trigger welcome achievement
   }, 500);
 });
+/* ✅ Mobile tap-to-open sidebar */
+const sidebar = document.getElementById("achievement-sidebar");
+
+function isMobile() {
+  return window.matchMedia("(max-width: 600px)").matches;
+}
+
+sidebar.addEventListener("click", () => {
+  if (!isMobile()) return;  // desktop uses hover only
+
+  sidebar.classList.toggle("mobile-open");
+});
 
 </script>
 <!-- 🎮 Minecraft-style Achievement Sidebar -->
@@ -1097,6 +1096,7 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
 
 
