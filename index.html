@@ -192,7 +192,13 @@ button:hover { animation:shine 1.3s linear infinite; transform:scale(1.05); }
 #journey-display p{ font-size:1.1em; margin-top:10px; color:#fff; position:relative; z-index:3; }
 
 /* --- Footer --- */
-footer{ background-color:var(--bw-1); padding:20px;  font-family:'Dancing Script',cursive; text-align:center; z-index:10; }
+footer {
+  background-color: var(--bw-1);
+  padding: 20px;
+  text-align: center;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
 /* Neon glow pulse animation */
 @keyframes neonPulse {
   0%, 100% {
@@ -489,13 +495,7 @@ body {
   padding: 40px 0;
 }
 
-/* Optional: ensure footer also connects to both edges */
-footer {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-      margin: 0;
-    border-top: 0;
-}
+
 </style>
 </head>
 <body>
@@ -1034,6 +1034,7 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
 
 
