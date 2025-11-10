@@ -480,6 +480,17 @@ footer p {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
+/* ✅ Prevent achievements sidebar from blocking tab clicks */
+#achievement-sidebar,
+#achievement-sidebar * {
+  pointer-events: none !important;   /* sidebar + children non-touchable */
+}
+
+/* ✅ Re-enable interaction ONLY on desktop hover */
+#achievement-sidebar:hover,
+#achievement-sidebar:hover * {
+  pointer-events: auto !important;
+}
 
 /* End of CSS */
 </style>
@@ -905,8 +916,3 @@ window.onload=()=>{
 
 </body>
 </html>
-
-
-
-
-
