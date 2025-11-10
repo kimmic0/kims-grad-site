@@ -891,6 +891,17 @@ document.addEventListener("mousemove",e=>{
   const isDark = luminance(getBgColor(document.elementFromPoint(e.clientX,e.clientY))) < 128;
   spawnBow(e.pageX-12,e.pageY-12,isDark);
 });
+// ✅ Allow bow cursor to follow your finger without breaking tab taps
+document.addEventListener('touchmove', e => {
+  const touch = e.touches[0];
+  if (!touch) return;
+
+  const isDark =
+    luminance(getBgColor(document.elementFromPoint(touch.clientX, touch.clientY))) < 128;
+
+  spawnBow(touch.pageX - 12, touch.pageY - 12, isDark);
+
+}, { passive: true });  // ✅ Important: preserves tap + scrolling!
 
 /* -------------------- Invitation Screen -------------------- */
 const screen=document.getElementById("launch-screen");
@@ -918,4 +929,5 @@ window.onload=()=>{
 
 </body>
 </html>
+
 
