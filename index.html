@@ -159,15 +159,53 @@ button:hover { animation:shine 1.3s linear infinite; transform:scale(1.05); }
 }
 #journey-display img{ max-width:80%; border-radius:12px; border:2px solid #fff; display:none; margin-top:20px; z-index:3; position:relative; }
 #journey-display p{ font-size:1.1em; margin-top:10px; color:#fff; position:relative; z-index:3; }
-
-/* --- Footer --- */
+/* ✅ FIX: Full-bleed footer without overflow */
 footer {
+  position: relative;
   background-color: var(--bw-1);
   padding: 20px;
   text-align: center;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  color: var(--bw-4);
+  overflow: hidden; /* prevents white bar on right */
 }
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  background: var(--bw-1);
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+/* ✅ Prevent gap under the header */
+header p {
+  margin-bottom: 0;
+}
+
+/* ✅ FIX JOURNEY full-width without white overflow */
+#journey {
+  position: relative;
+  padding: 40px 0;
+  color: white;
+  overflow: hidden; /* prevents right-side white bar */
+}
+
+#journey::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;      /* true full bleed */
+  height: 100%;
+  background: black; /* journey background */
+  transform: translateX(-50%);
+  z-index: -1;
+}
+  
 /* Neon glow pulse animation */
 @keyframes neonPulse {
   0%, 100% {
@@ -454,16 +492,6 @@ body {
   border-bottom: 2px solid var(--bw-1);
   box-sizing: border-box;
 }
-
-/* Journey tab ONLY is full bleed black */
-#journey{
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  background: black;
-  color: white;
-  padding: 40px 0;
-}
-
 
 </style>
 </head>
@@ -1003,6 +1031,7 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
 
 
