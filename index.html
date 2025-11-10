@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<header>
-  <h1>
-    Kim’s Graduation Website
-    <img src="https://media.tenor.com/eGCjV7lEokoAAAAj/black-bow.gif" alt="black-bow">
-  </h1>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <p class="subtitle">Bachelor of Science in Computer Engineering</p>
-  <p class="subtitle">Elegant. Intelligent. Empowered by Jehovah</p>
-</header>
+<!-- ✅ Your Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Asap+Condensed&family=Monsieur+La+Doulaise&family=Alumni+Sans&family=Silkscreen&family=Libre+Bodoni:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<title>Kim’s Graduation 🎓</title>
+
 <style>
-  /* === Invitation Launch Page === */
+/* === Invitation Launch Page === */
 #launch-screen {
   position: fixed;
   top: 0; left: 0;
@@ -21,7 +22,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  z-index: 999999; /* on top of everything */
+  z-index: 999999;
   cursor: pointer;
   animation: fadeIn 1s ease forwards;
 }
@@ -54,219 +55,351 @@
 /* Animations */
 @keyframes float {
   from { transform: translateY(-10px); }
-  to { transform: translateY(10px); }
+  to   { transform: translateY(10px); }
 }
 @keyframes pulse {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.2); opacity: 0.7; }
+  50%      { transform: scale(1.2); opacity: 0.7; }
 }
 @keyframes fadeOut {
   to { opacity: 0; visibility: hidden; }
 }
 
 /* --- Base styles --- */
-:root{
+:root {
   --bw-1:#000;
   --bw-2:#111;
   --bw-3:#333;
   --bw-4:#fff;
   --accent:#dedede;
 }
-/* ✅ Header Fix — remove ALL extra spacing */
-header {padding: 40px 20px 10px; /* reduced bottom padding */border-bottom: 2px solid var(--bw-1);background-color: var(--bw-4);}
 
-/* ✅ Fix header title spacing */
-header h1 { margin: 0; padding: 0; font-family:'Monsieur La Doulaise', cursive; font-size: 20px; letter-spacing: 1px; max-width: 90%; line-height: 1.2;}
+body {
+  margin:0;
+  padding:0;
+  width:100%;
+  overflow-x:hidden;
+  font-family:'Alumni Sans', sans-serif;
+  background:var(--bw-4);
+  color:var(--bw-1);
+  text-align:center;
+}
 
-/* ✅ Fix the bow image inside H1 */
-header h1 img { display: block; margin: 10px auto 0; width: 60px; height: auto;}
+/* ✅ HEADER – FIXED, CLEAN, NO GAP */
+header {
+  padding: 40px 20px 0px;
+  margin: 0;
+  border-bottom: 2px solid var(--bw-1);
+  background-color: var(--bw-4);
+}
 
-/* ✅ Fix subtitle paragraphs */
-header .subtitle {margin: 0; padding: 0; font-size: 30px; color: #333; font-weight: bold;  line-height: 1.1;}
+header h1 {
+  margin: 0;
+  padding: 0;
+  font-family:'Monsieur La Doulaise', cursive;
+  font-size: 20px;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
 
-h2 {  font-size: 38px;  font-family: 'Alumni Sans', sans-serif;  margin-bottom: 20px;}
+header h1 img {
+  display: block;
+  margin: 10px auto 0;
+  width: 60px;
+  height: auto;
+}
+
+header p {
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.1;
+}
 
 /* --- Tabs --- */
-.tabs { font-family: 'Asap Condensed'; display:flex; justify-content:center; flex-wrap:wrap; background-color:var(--bw-1); padding:10px 0; z-index:10; position:relative; }
-.tab { font-family: 'Asap Condensed';background:linear-gradient(120deg,var(--bw-4) 0%, #ccc 30%, var(--bw-4) 50%); background-size:200% auto; color:var(--bw-1); padding:10px 25px; border:2px solid var(--bw-1); margin:5px; border-radius:30px; font-size:24px; cursor:pointer; transition:all .3s ease; }
-.tab:hover { animation:shine 1.2s linear infinite; transform:scale(1.05); }
-.tab-content {  width: 100%; max-width: 900px; display:none; padding:20px 10px; animation:fadeIn .4s ease; box-sizing: border-box; }
+.tabs {
+  font-family: 'Asap Condensed';
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  background-color:var(--bw-1);
+  padding:10px 0;
+  margin:0; /* ✅ Fixes the gap */
+  border-top: 2px solid var(--bw-1);
+  border-bottom: 2px solid var(--bw-1);
+}
+
+.tab {
+  font-family: 'Asap Condensed';
+  background:linear-gradient(120deg,var(--bw-4) 0%, #ccc 30%, var(--bw-4) 50%);
+  background-size:200% auto;
+  color:var(--bw-1);
+  padding:10px 25px;
+  border:2px solid var(--bw-1);
+  margin:5px;
+  border-radius:30px;
+  font-size:24px;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.tab:hover {
+  animation:shine 1.2s linear infinite;
+  transform:scale(1.05);
+}
+
+.tab-content {
+  width: 100%;
+  max-width: 900px;
+  display:none;
+  padding:20px 10px;
+  animation:fadeIn .4s ease;
+}
+
 .active { display:block; }
-@keyframes shine { 0%{background-position:-200% center;}100%{background-position:200% center;} }
-@keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
-/* --- Inputs & buttons --- */
-input, textarea { border-radius:10px; border:1px solid #aaa; padding:10px; font-size:16px; margin-top:10px; }
-input{ width:50%; } textarea{ width:80%; height:100px; }*/
-button { border:none; padding:10px 25px; border-radius:30px; background:linear-gradient(120deg,var(--bw-1) 0%, #444 30%, #999 50%, #444 70%, var(--bw-1) 100%); background-size:200% auto; color:var(--bw-4); margin-top:10px; font-size:16px; cursor:pointer; transition:all .3s ease; }
-button:hover { animation:shine 1.3s linear infinite; transform:scale(1.05); }
+@keyframes shine {
+  0%{background-position:-200% center;}
+  100%{background-position:200% center;}
+}
 
-/* --- Gallery --- */
-#gallery img { width:200px; height:auto; border-radius:15px; border:2px solid var(--bw-1); margin:10px; transition:transform .3s, opacity .4s; opacity:1; cursor:pointer; }
-#gallery img:hover{ transform:scale(1.05); }
+@keyframes fadeIn {
+  from{opacity:0}
+  to{opacity:1}
+}
 
-/* --- Main / Journey canvas --- */
-#main-content { transition:background .5s ease; position:relative; z-index:1; min-height:400px; }
-.journey-active { background-color:var(--bw-1); color:var(--bw-4); }
-.journey-bg { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none;background: transparent;  opacity: 0; transition: opacity 0.4s ease;
-             margin: 0; padding: 0;  border: 0;}
-.journey-active .journey-bg {opacity: 1;}
-/* --- Timeline --- */
+/* Inputs */
+input, textarea {
+  border-radius:10px;
+  border:1px solid #aaa;
+  padding:10px;
+  font-size:16px;
+  margin-top:10px;
+}
+input{ width:50%; }
+textarea{ width:80%; height:100px; }
+
+/* Buttons */
+button {
+  border:none;
+  padding:10px 25px;
+  border-radius:30px;
+  background:linear-gradient(120deg,var(--bw-1), #444, #999, #444, var(--bw-1));
+  background-size:200% auto;
+  color:var(--bw-4);
+  margin-top:10px;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s ease;
+}
+button:hover {
+  animation:shine 1.3s linear infinite;
+  transform:scale(1.05);
+}
+
+/* Gallery */
+#gallery img {
+  width:200px;
+  border-radius:15px;
+  border:2px solid var(--bw-1);
+  margin:10px;
+  transition:.3s ease;
+  cursor:pointer;
+}
+#gallery img:hover { transform:scale(1.05); }
+
+/* Main content + journey background */
+#main-content {
+  position:relative;
+  z-index:1;
+  min-height:400px;
+  transition:background .5s ease;
+}
+
+.journey-active {
+  background-color:var(--bw-1);
+  color:var(--bw-4);
+}
+
+.journey-bg {
+  position:absolute;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  opacity:0;
+  transition:.4s ease;
+}
+
+.journey-active .journey-bg {
+  opacity:1;
+}
+
+/* Timeline */
 .timeline-container {
-  width: 100vw;       /* full viewport width */
-  max-width: 100%;    /* prevent overflow beyond screen */
-  position: relative;
-  padding: 60px 0;
-  overflow-x: auto;   /* allow horizontal scroll on small screens */
-  box-sizing: border-box;
+  width:100vw;
+  padding:60px 0;
+  overflow-x:auto;
 }
 
 .timeline {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row; /* stack points vertically */
-  align-items: center; /* align points to the left */
-  position: relative;
-  height: auto; /* let it expand vertically */
-  gap: 40px;
-  justify-content: center; /* <-- align to left instead of center */
-  padding-left: 20px;          /* optional padding so it doesn’t stick to edge */
+  display:flex;
+  flex-wrap:wrap;
+  gap:40px;
+  justify-content:center;
 }
 
 .point {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  border: 2px solid silver;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: transform .3s ease, box-shadow .3s ease;
-  flex-shrink: 0;
-  z-index: 2;              /* circle stays on top */
+  width:20px;
+  height:20px;
+  background:white;
+  border:2px solid silver;
+  border-radius:50%;
+  cursor:pointer;
+  position:relative;
+  transition:.3s ease;
+  z-index:2;
 }
-
 .point:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 12px rgba(200, 200, 200, 0.8);
+  transform:scale(1.2);
+  box-shadow:0 0 12px rgba(200,200,200,0.8);
 }
+
 .timeline-led {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 16px;             /* slightly smaller than circle */
-  height: 16px;
-  border-radius: 50%;
-  background-color: white;
-  box-shadow: 0 0 16px 8px rgba(255,255,255,0.6); /* soft glow */
-  z-index: 1;              /* behind circle but above timeline container */
-  pointer-events: none;
-  opacity: 0.4;
-  transform: translate(-50%, -50%) scale(1);
-  transition: opacity .2s ease, transform .2s ease;
+  position:absolute;
+  top:50%; left:50%;
+  width:16px; height:16px;
+  background:white;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  opacity:.4;
+  z-index:1;
 }
-#journey-display img{ max-width:80%; border-radius:12px; border:2px solid #fff; display:none; margin-top:20px; z-index:3; position:relative; }
-#journey-display p{ font-size:1.1em; margin-top:10px; color:#fff; position:relative; z-index:3; }
-/* ✅ FIX: Full-bleed footer without overflow */
+
+/* Journey display */
+#journey-display img {
+  max-width:80%;
+  border-radius:12px;
+  border:2px solid #fff;
+  display:none;
+  margin-top:20px;
+}
+#journey-display p {
+  color:white;
+  font-size:1.1em;
+  margin-top:10px;
+}
+
+/* Footer */
 footer {
-  position: relative;
-  background-color: var(--bw-1);
-  padding: 20px;
-  text-align: center;
-  color: var(--bw-4);
-  overflow: hidden; /* prevents white bar on right */
+  background:var(--bw-1);
+  padding:20px;
+  color:var(--bw-4);
+  position:relative;
+  overflow:hidden;
 }
-
 footer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 100vw;
-  height: 100%;
-  background: var(--bw-1);
-  transform: translateX(-50%);
-  z-index: -1;
+  content:"";
+  position:absolute;
+  top:0; left:50%;
+  width:100vw;
+  height:100%;
+  background:var(--bw-1);
+  transform:translateX(-50%);
+  z-index:-1;
 }
 
-/* ✅ Prevent gap under the header */
-header p {
-  margin-bottom: 0;
+footer p {
+  animation:neonPulse 1.8s ease-in-out infinite alternate;
+  margin:5px 0;
 }
 
-/* ✅ FIX JOURNEY full-width without white overflow */
-#journey {
-  position: relative;
-  padding: 40px 0;
-  color: white;
-  overflow: hidden; /* prevents right-side white bar */
-}
-
-#journey::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 100vw;      /* true full bleed */
-  height: 100%;
-  background: black; /* journey background */
-  transform: translateX(-50%);
-  z-index: -1;
-}
-  
-/* Neon glow pulse animation */
+/* Neon animation */
 @keyframes neonPulse {
-  0%, 100% {
-    text-shadow: 
+  0%,100%{
+    text-shadow:
       0 0 5px #fff,
       0 0 10px #fff,
-      0 0 20px #fff,
-      0 0 30px #fff;
+      0 0 20px #fff;
   }
-  50% {
-    text-shadow: 
-      0 0 8px #fff,
-      0 0 16px #fff,
-      0 0 24px #fff,
+  50%{
+    text-shadow:
+      0 0 10px #fff,
+      0 0 20px #fff,
       0 0 40px #fff;
   }
 }
-footer p {font-size: 1.2em; color: var(--bw-4); margin: 5px 0; animation: neonPulse 1.8s ease-in-out infinite alternate;}
 
-/* --- Lightbox --- */
-#lightbox{ display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:10000; }
-#lightbox img{ max-width:90%; max-height:90%; border-radius:15px; border:2px solid #fff; }
-
-#achievements-sidebar h3 {
-  margin-top: 0;
-  text-align: center;
-  font-size: 14px;
-  text-decoration: underline;
-  color: var(--bw-4);
-  letter-spacing: 1px;
+/* Lightbox */
+#lightbox {
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.85);
+  justify-content:center;
+  align-items:center;
+  z-index:10000;
 }
-/* pixel tile for each achievement: square + pixel border */
+#lightbox img {
+  max-width:90%;
+  max-height:90%;
+  border-radius:15px;
+  border:2px solid #fff;
+}
+
+/* === Achievements Sidebar === */
+#achievement-sidebar {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  width: 40px;
+  background: linear-gradient(#111, #000);
+  border-left: 3px solid #666;
+  padding: 8px 0;
+  border-radius: 8px 0 0 8px;
+  font-family: "Press Start 2P", monospace;
+  color: white;
+  z-index: 9999;
+  transition: .3s ease;
+}
+#achievement-sidebar:hover {
+  width: 47%;
+  padding: 8px;
+}
+
+#achievements-list {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
 .achievement {
-  background: linear-gradient(180deg,#222 0%, #111 100%);
+  background: linear-gradient(#222,#111);
   padding:6px;
-  width: calc(100% - 12px); /* leave padding */
-  overflow: visible;         /* ensure text isn’t clipped */
+  width: calc(100% - 12px);
   border:3px solid #000;
   border-left-width:6px;
   border-top-width:6px;
-  border-radius:2px;
   display:flex;
   gap:8px;
   align-items:center;
-  justify-content:space-between;
-  box-shadow: 3px 3px 0 #000;
-  image-rendering: pixelated;
+  color:white;
 }
-.achievement .label { white-space: nowrap;overflow: visible;text-overflow: clip;text-align:left; font-family:monospace; font-size:13px; color:var(--bw-4); }
-.achievement .icon {width:34px; height:34px; background:#fff; border:2px solid #000; display:inline-block; margin-right:6px;
-  box-shadow: inset 0 0 0 2px #111;image-rendering: pixelated;filter: grayscale(100%);}
 
-/* --- Pixel Minecraft-style toast (center top) --- */
+.achievement .icon {
+  width:34px;
+  height:34px;
+  background:#fff;
+  border:2px solid #000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
 #achievement-toast {
   position:fixed;
   left:50%;
@@ -281,229 +414,40 @@ footer p {font-size: 1.2em; color: var(--bw-4); margin: 5px 0; animation: neonPu
   padding:8px 14px;
   border-radius:4px;
   font-family:monospace;
-  box-shadow:0 0 10px #000;
   opacity:0;
+  transition:.25s ease;
   z-index:100000;
-  transition:opacity .25s ease, top .25s ease;
-  image-rendering: pixelated;
 }
-#achievement-toast .text { text-align:left; line-height:1; }
-#achievement-toast .text .title{ font-size:12px; color:#cfcfcf; margin:0; }
-#achievement-toast .text .name{ font-size:16px; margin:0; font-weight:700; color:#fff; }
-#achievement-toast.show{ opacity:1; top:92px; }
-
-/* --- Confetti & stars (grey + bright white) --- */
-.confetti { position:fixed; width:8px; height:8px; background:rgb(173, 172, 172); pointer-events:none; opacity:0.95; z-index:100001; border-radius:2px; transform:translateY(0); }
-.sparkle { position:fixed; width:6px; height:6px; background:transparent; pointer-events:none; z-index:100002; border-radius:50%; box-shadow:0 0 8px #fff; opacity:0.9; }
-/* Toast bigger on wide screens */
-@media (min-width: 1200px) {
-  #achievement-toast {
-    padding: 16px 28px;  /* bigger toast box */
-  }
-  #achievement-toast .text .title {
-    font-size: 18px;    /* bigger title */
-    flex-wrap: wrap;
-  }
-  #achievement-toast .text .name {
-    font-size: 28px;    /* bigger achievement name */
-    flex-wrap: wrap;
-  }
-  #achievement-toast img {
-    width: 48px;         /* bigger icon */
-    height: 48px;
-  }
-  header h1 {
-    font-size: clamp(1.8rem, 5vw, 4rem);
-    word-wrap: break-word;
-    white-space: normal;
-  }
-  h2 { font-size: 2.5rem; }
-  p { font-size: 2rem; }
+#achievement-toast.show {
+  opacity:1;
+  top:92px;
 }
 
-
-/* Tablets / small laptops */
-@media (max-width: 1024px){
-  h1 { font-size: 4rem; }
-  h2 { font-size: 2.5rem; }
-  p { font-size: 1.8rem; }
-  .tab { font-size: 20px; padding: 8px 16px; }
-  #gallery img { max-width: 160px; }
-}
-
-/* Phones / very small screens */
-@media (max-width: 500px){
-  #launch-screen h1 {
-    font-size: 4rem;  /* smaller for mobile */
-    line-height: 1.2;   /* wrap nicely */
-  }
-  #launch-screen p {
-    font-size: 3rem;
-  }
-  h1 { font-size: 4rem; }
-  h2 { font-size: 3rem; }
-  p { font-size: 1.6rem; }
-  .tab { font-size: 17px; padding: 6px 12px; }
-  .tab-content {
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px 10px; /* adjust vertical and horizontal padding */
-    box-sizing: border-box;
-  }
-  #main-content {
-    padding: 0;
-  }
-  input, textarea { width: 95%; }
-  #gallery img { max-width: 120px; }
-  #journey-display img { max-width: 95%; }
-}
-
-/* === Sidebar === */
-/* Collapsed sidebar */
-#achievement-sidebar {
-  position: fixed;
-  top: 100px;
-  right: 0;
-  width: 40px;             /* collapsed width */
-  max-height: 80vh;
- background: linear-gradient(to bottom, #111 0%, #000 100%);
-  border-left: 3px solid #666;
-  padding: 8px 0;
-  border-radius: 8px 0 0 8px;
-  font-family: "Press Start 2P", monospace;
-  color: white;
-  z-index: 9999;
-  box-shadow: -6px 6px 0 #000 inset;
-  transition: all 0.3s ease;
-}
-
-/* Expand sidebar on hover */
-#achievement-sidebar:hover {
-  width: 280px;            /* expand width */
-  padding: 8px;            /* add some padding when expanded */
-  width: 47%;
-}
-
-/* Achievements list inside */
-#achievements-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.achievement-item {
-  background: linear-gradient(90deg, #222 0%, #444 100%);
-  margin-bottom: 6px;
-  padding: 6px;
-  border: 1px solid #777;
-  border-radius: 4px;
-  box-shadow: 0 0 4px #888;
-}
-
-/* === Popup Style === */
-#achievement-popup {
-  position: fixed;
-  bottom: 40px;
-  left: 40px;
-  display: none;
-  animation: slideIn 0.4s ease-out;
-  z-index: 10000;
-}
-
-#achievement-popup-inner {
-  background: linear-gradient(to bottom, #222, #000);
-  color: white;
-  padding: 10px 20px;
-  border: 2px solid #888;
-  border-radius: 6px;
-  font-family: "Press Start 2P", monospace;
-  box-shadow: 0 0 8px #777;
-}
-
-#achievement-popup-title {
-  color: #bbb;
-  font-size: 10px;
-  display: block;
-  margin-bottom: 6px;
-  letter-spacing: 1px;
-}
-
-#achievement-popup-text {
-  font-size: 12px;
-  color: #fff;
-  text-shadow: 0 0 4px #aaa;
-}
-
-/* === Pixel font === */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-/* === Animations === */
-@keyframes slideIn {
-  from { transform: translateX(-100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-/* === Grey confetti and stars === */
 .confetti {
-  position: fixed;
-  width: 6px;
-  height: 6px;
-  background: linear-gradient(45deg, #ccc, #999);
-  top: -10px;
-  opacity: 0.8;
-  animation: fall 3s linear forwards;
-  z-index: 9999;
+  position:fixed;
+  width:8px;
+  height:8px;
+  background:#9e9e9e;
+  opacity:0.95;
+  z-index:100001;
 }
 
-.star {
-  position: fixed;
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(circle, #fff 0%, #ccc 100%);
-  border-radius: 50%;
-  animation: sparkle 1.5s ease-out forwards;
+.sparkle {
+  position:fixed;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  box-shadow:0 0 8px #fff;
+  opacity:.9;
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-@keyframes sparkle {
-  0% { transform: scale(0); opacity: 0.8; }
-  50% { transform: scale(1.5); opacity: 1; }
-  100% { transform: scale(0); opacity: 0; }
-}
-/* === FIX: Extend black tab + section backgrounds full width === */
-body {
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-
- .tabs, footer {
-  width: 100%;
-  max-width: 100%;
-  margin-left: 0; /* remove calc(50%-50vw) for mobile */
-  box-sizing: border-box;
-}
-
-/* Ensure tab bar spans edge-to-edge */
-.tabs {
-  justify-content: center;
-  background-color: var(--bw-1);
-  border-top: 2px solid var(--bw-1);
-  border-bottom: 2px solid var(--bw-1);
-  box-sizing: border-box;
-}
-
+/* End of CSS */
 </style>
+</head>
+
 <body>
-  <!-- 🎓 Invitation Launch Screen -->
+
+<!-- ✅ Invitation Screen -->
 <div id="launch-screen">
   <div class="invite-box">
     <h1>You’ve Been Invited 🎓</h1>
@@ -511,6 +455,17 @@ body {
     <div class="envelope">✉️</div>
   </div>
 </div>
+
+<!-- ✅ ✅ ✅ YOUR ONLY HEADER (correct one) -->
+<header>
+  <h1>Kim’s Graduation Website
+    <img src="https://media.tenor.com/eGCjV7lEokoAAAAj/black-bow.gif" alt="black-bow">
+  </h1>
+  <p>Bachelor of Science in Computer Engineering</p>
+  <p>Elegant. Intelligent. Empowered by Jehovah</p>
+</header>
+
+<!-- ✅ Tabs -->
 <div class="tabs">
   <button class="tab" onclick="openTab('home')">Home</button>
   <button class="tab" onclick="openTab('dresscode')">Dress Code</button>
@@ -519,38 +474,43 @@ body {
   <button class="tab" onclick="openTab('wishlist')">Gift Ideas</button>
   <button class="tab" onclick="openTab('journey')">My Journey</button>
 </div>
+
 <div id="main-content">
   <canvas class="journey-bg" id="journey-bg"></canvas>
+
+  <!-- HOME TAB -->
   <div id="home" class="tab-content active">
     <h2>Welcome!</h2>
-    <p>Thank you for celebrating this milestone with me! So happy to be able to say that all the obstacles I've overcome were well worth it it in the end.
-       I'm incredibly grateful first and foremost to God and to my family for their continuous love and support. </p>
-    <p> If you are reading this, you have been carefully selected to partake in this momentous occasion. I hope you enjoy exploring my little corner of 
-      the web, and feel free to reach out to me or my family with any questions!
-    </p>
-<div id="invitation" style="margin-top:30px; margin-bottom: 0; text-align:center;">
-  <p style=" font-style:italic;font-family:'Alumni Sans', sans-serif;">
-  <strong>Love, <br>
-  <strong>Kim</strong></strong></p>
-  <!-- Smooth transition: slight fade or line -->
-  <hr style="width:50px; border:1px solid #ccc; margin:10px auto 20px;">
+    <p>Thank you for celebrating this milestone with me! So happy to be able to say that all the obstacles I've overcome were well worth it in the end.</p>
+    <p>I'm incredibly grateful to God and to my family for their continuous love and support.</p>
 
-  <p style="font-size:2rem; font-family:'Alumni Sans', sans-serif; color:#222;">
-    You are cordially invited to celebrate my graduation!<br>
-  <strong>Venue location will be shared privately upon RSVP:</strong><br>
-  <strong>Date:</strong> Saturday, December 20, 2025<br>
-  <strong>Time:</strong> 4:30 PM<br>
-  <strong>Please contact me by email or text for more information:</strong><br>
-  <strong>📧 kimannrojas04@gmail.com</a></strong>
-</div>
-  </p>
-</div>
-</div>
-  <div id="dresscode" class="tab-content">
-    <h2> Dress Code</h2>
-    <p>To honor the elegance of this special occasion, guests are kindly requested to observe a formal dress code. Attire should reflect sophistication and grace, with a refined color palette of black and white. Gentlemen are encouraged to wear dress shirts, tailored slacks, or a classic suit, while ladies are invited to wear dresses or other formal ensembles. We appreciate your thoughtful attention to this attire and for celebrating this milestone.</p>
-    <img src="dresscode.jpg" alt="Dress Code Example" style="max-width:80%; border-radius:12px; margin-top:20px; border:2px solid #000;">    
+    <div id="invitation" style="margin-top:30px; text-align:center;">
+      <p style="font-style:italic;font-family:'Alumni Sans';">
+        <strong>Love,<br>Kim</strong>
+      </p>
+      <hr style="width:50px;border:1px solid #ccc;margin:10px auto 20px;">
+      <p style="font-size:2rem;color:#222;">
+        You are cordially invited to celebrate my graduation!<br>
+        <strong>Location will be shared privately upon RSVP.</strong><br>
+        <strong>Date:</strong> Saturday, December 20, 2025<br>
+        <strong>Time:</strong> 4:30 PM<br>
+        <strong>📧 Email:</strong> kimannrojas04@gmail.com
+      </p>
+    </div>
   </div>
+  <!-- DRESS CODE TAB -->
+  <div id="dresscode" class="tab-content">
+    <h2>Dress Code</h2>
+    <p>
+      To honor the elegance of this special occasion, guests are kindly requested to observe a formal dress code.
+      Attire should reflect sophistication and grace, with a refined color palette of black and white.
+      Gentlemen are encouraged to wear dress shirts, tailored slacks, or a classic suit, while ladies are invited
+      to wear dresses or other formal ensembles. Thank you for celebrating this milestone with style.
+    </p>
+    <img src="dresscode.jpg" alt="Dress Code" style="max-width:80%;border-radius:12px;margin-top:20px;border:2px solid #000;">
+  </div>
+
+  <!-- GUESTBOOK TAB -->
   <div id="guestbook" class="tab-content">
     <h2>💬 Guestbook</h2>
     <input id="nameInput" type="text" placeholder="Your name..."><br>
@@ -558,509 +518,351 @@ body {
     <button onclick="postMessage()">Post</button>
     <div id="messages"></div>
   </div>
+
+  <!-- PHOTOS TAB -->
   <div id="photos" class="tab-content">
-    <h2> Share a Photo</h2>
+    <h2>Share a Photo</h2>
     <input type="file" id="photoInput" accept="image/*"><br>
     <button id="uploadBtn" onclick="uploadPhoto()">Upload Photo 📸</button>
     <div id="gallery"></div>
   </div>
-<div id="wishlist" class="tab-content">
-  <h2>Gift Registry</h2>
-  <p>Thank you so much for your thoughtfulness! For those wishing to honor this special occasion with a gift, I have lovingly curated an <a href="https://www.amazon.com/hz/wishlist/ls/FB17XEUSTE2K?ref_=wl_share" target="_blank">Amazon Wishlist</a>.</p>
-  <p>For your convenience, monetary gifts are also graciously and warmly welcomed, should you prefer this option.</p>
-</div>
-<div id="journey" class="tab-content">
-  <h2 style="color:white;">🛠️ My Journey</h2>
 
-  <!-- Timeline container -->
-  <div class="timeline-container">
-    <div class="timeline">
-      <div class="point" data-img="journey2.jpg" data-desc="2020 – Engineering Fundamentals"></div>
-      <div class="point" data-img="journey3.jpg" data-desc="2021 – Coding Foundations 💻"></div>
-      <div class="point" data-img="journey4.jpg" data-desc="2022 – Digital Logic Design & Data Structures"></div>
-      <div class="point" data-img="journey5.jpg" data-desc="2023 – Circuits & Operating Systems"></div>
-      <div class="point" data-img="journey6.jpg" data-desc="2024 – Electronics & Microcontrollers"></div>
-      <div class="point" data-img="journey7.jpg" data-desc="2025 – Graduation! 🎓"></div>
+  <!-- WISHLIST TAB -->
+  <div id="wishlist" class="tab-content">
+    <h2>Gift Registry</h2>
+    <p>Thank you so much for your thoughtfulness!</p>
+    <p>
+      I have lovingly curated an 
+      <a href="https://www.amazon.com/hz/wishlist/ls/FB17XEUSTE2K?ref_=wl_share" target="_blank">Amazon Wishlist</a>.
+    </p>
+    <p>Monetary gifts are also graciously welcomed and deeply appreciated.</p>
+  </div>
+
+  <!-- JOURNEY TAB -->
+  <div id="journey" class="tab-content">
+    <h2 style="color:white;">🛠️ My Journey</h2>
+
+    <div class="timeline-container">
+      <div class="timeline">
+        <div class="point" data-img="journey2.jpg" data-desc="2020 – Engineering Fundamentals"></div>
+        <div class="point" data-img="journey3.jpg" data-desc="2021 – Coding Foundations 💻"></div>
+        <div class="point" data-img="journey4.jpg" data-desc="2022 – Digital Logic Design & Data Structures"></div>
+        <div class="point" data-img="journey5.jpg" data-desc="2023 – Circuits & Operating Systems"></div>
+        <div class="point" data-img="journey6.jpg" data-desc="2024 – Electronics & Microcontrollers"></div>
+        <div class="point" data-img="journey7.jpg" data-desc="2025 – Graduation! 🎓"></div>
+      </div>
+    </div>
+
+    <div id="journey-display">
+      <img id="journey-img" src="" alt="">
+      <p id="journey-desc"></p>
     </div>
   </div>
-
-  <!-- Move journey display INSIDE the journey tab -->
-  <div id="journey-display">
-    <img id="journey-img" src="" alt="">
-    <p id="journey-desc"></p>
-  </div>
 </div>
-<!-- Lightbox -->
-<div id="lightbox"><img id="lightbox-img" src=""></div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox"><img id="lightbox-img"></div>
+
 <footer>
   <p>"Elegance is intelligence made visible."</p>
   <p>— Celebrating Grace & Code 🎓</p>
 </footer>
-<!-- Achievement toast (Minecraft-like, pixel, B/W) -->
-<div id="achievement-toast" aria-live="polite">
+
+<!-- ACHIEVEMENT TOAST -->
+<div id="achievement-toast">
   <img src="white_trophy.gif" alt="achievement icon">
   <div class="text">
     <p class="title">Achievement Unlocked!</p>
     <p class="name" id="toast-name">Name</p>
   </div>
 </div>
-<!-- optional: achievement sound file (place in same folder or remove if not needed) -->
+
 <audio id="achievement-sound" src="levelup.mp3" preload="auto"></audio>
+
+<!-- ✅ SCRIPT STARTS HERE -->
 <script type="module">
-// -------------------- Firebase imports --------------------
+
+/* -------------------- Firebase -------------------- */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-const firebaseConfig={apiKey:"AIzaSyBXrTc31-4bNMkdh4DTvLu29vBHOS66gEA",authDomain:"kim-s-grad-website.firebaseapp.com",projectId:"kim-s-grad-website"};
-const app=initializeApp(firebaseConfig);
-const db=getFirestore(app);
-// -------------------- Achievement data + UI refs --------------------
-const achievementsList = document.getElementById('achievements-list');
-const achievements = {
-  "Hello, World!": false,           //welcome page
-  "Data Collector": false,    // upload photo
-  "Logger": false,            // guestbook post
-  "System Scanner": false,    // wishlist open
-  "Process Tracker": false,   // hover journey point
-  "Interface Designer": false, // open dresscode
-  "Computer Engineer": false  //hidden achievement
+
+const firebaseConfig = {
+  apiKey:"AIzaSyBXrTc31-4bNMkdh4DTvLu29vBHOS66gEA",
+  authDomain:"kim-s-grad-website.firebaseapp.com",
+  projectId:"kim-s-grad-website"
 };
-// helper to create a pixel icon (keeps B/W)
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* -------------------- Achievements -------------------- */
+const achievements = {
+  "Hello, World!": false,
+  "Data Collector": false,
+  "Logger": false,
+  "System Scanner": false,
+  "Process Tracker": false,
+  "Interface Designer": false,
+  "Computer Engineer": false
+};
+
+const achievementsList = document.getElementById("achievements-list");
+
 function makeIconLetter(letter){
-  const el = document.createElement('div');
-  el.className = 'icon';
-  el.textContent = letter || '';
-  el.style.display = 'flex';
-  el.style.alignItems = 'center';
-  el.style.justifyContent = 'center';
-  el.style.fontWeight = '900';
-  el.style.fontSize = '14px';
-  el.style.color = '#111';
-  el.style.background = '#fff';
+  const el = document.createElement("div");
+  el.className="icon";
+  el.textContent = letter;
   return el;
 }
-// unlock animation(minecraft notif): toast + confetti + sidebar add
+
 function unlockAchievement(name){
-  if(achievements[name]) return; // already unlocked
+  if(achievements[name]) return;
   achievements[name] = true;
-  // 1) add to sidebar as pixel tile
-  const tile = document.createElement('div');
-  tile.className = 'achievement';
-  const label = document.createElement('div');
-  label.className = 'label';
+
+  const tile = document.createElement("div");
+  tile.className="achievement";
+  const icon = makeIconLetter(name[0]);
+  const label = document.createElement("div");
+  label.className="label";
   label.textContent = name;
-  const icon = makeIconLetter(name[0] || '✓'); // simple pixel icon
+
   tile.appendChild(icon);
   tile.appendChild(label);
   achievementsList.appendChild(tile);
-  // 2) show pixel toast (Minecraft-like)
-  const toast = document.getElementById('achievement-toast');
-  const tname = document.getElementById('toast-name');
-  tname.textContent = name;
-  toast.classList.add('show');
-  // 3) play sound if available, otherwise fallback oscillator
-  const sound = document.getElementById('achievement-sound');
-  if(sound && sound.src){
-    sound.currentTime = 0;
-    sound.play().catch(()=>{/* ignore autoplay block */});
-  } else {
-    // lightweight audio fallback
-    try{
-      const Ctx = window.AudioContext || window.webkitAudioContext;
-      const ctx = new Ctx();
-      const o = ctx.createOscillator();
-      const g = ctx.createGain();
-      o.type = 'square';
-      o.frequency.value = 660;
-      g.gain.value = 0.08;
-      o.connect(g); g.connect(ctx.destination);
-      o.start();
-      o.stop(ctx.currentTime + 0.2);
-    }catch(e){}
-  }
-  // 4) confetti (grey squares) + sparkles (white glows)
-  spawnConfettiAndSparkles();
 
-  // hide toast after a few seconds
-  clearTimeout(toast._hideTimer);
-  toast._hideTimer = setTimeout(()=>{ toast.classList.remove('show'); }, 3800);
-  // --- CHECK HIDDEN ACHIEVEMENT ---
-if (!achievements.hidden &&
+  showToast(name);
+  spawnConfetti();
+
+  if(
     achievements["Hello, World!"] &&
-    achievements["Data Collector"]&&
+    achievements["Data Collector"] &&
     achievements["Logger"] &&
     achievements["Interface Designer"] &&
+    achievements["Process Tracker"] &&
     achievements["System Scanner"] &&
-    achievements["Process Tracker"]){
-  // Delay the unlock by 1 second (1000 ms)
-  setTimeout(() => {
-    unlockAchievement("Computer Engineer");
-    achievements.Hidden = true;
-  }, 5000);
-}
-
-}
-// confetti + sparkle spawner
-function spawnConfettiAndSparkles(){
-  const count = 22;
-  for(let i=0;i<count;i++){
-    const c = document.createElement('div');
-    c.className = 'confetti';
-    const x = window.innerWidth - 220 + Math.random()*180;
-    const y = 100 + Math.random()*120;
-    c.style.left = x + 'px';
-    c.style.top = y + 'px';
-    c.style.width = 6 + Math.random()*6 + 'px';
-    c.style.height = c.style.width;
-    c.style.background = '#9e9e9e';
-    c.style.opacity = 0.95;
-    document.body.appendChild(c);
-    // animate downward + rotate
-    const fall = [
-      { transform: `translateY(0) rotate(0deg)`, opacity:1 },
-      { transform: `translateY(${80 + Math.random()*120}px) rotate(${Math.random()*360}deg)`, opacity:0 }
-    ];
-    const dur = 900 + Math.random()*900;
-    c.animate(fall, { duration: dur, easing: 'cubic-bezier(.2,.6,.2,1)' });
-    setTimeout(()=>c.remove(), dur+50);
-    // also spawn small sparkle near same x
-    if(Math.random() < 0.6){
-      const s = document.createElement('div');
-      s.className = 'sparkle';
-      s.style.left = (x + (Math.random()*40-20)) + 'px';
-      s.style.top = (y + (Math.random()*40-20)) + 'px';
-      s.style.width = '6px';
-      s.style.height = '6px';
-      s.style.opacity = 1;
-      s.style.boxShadow = '0 0 8px #fff, 0 0 14px rgba(255,255,255,0.6)';
-      document.body.appendChild(s);
-      const sparkleAnim = [
-        { transform: 'scale(0.6)', opacity: 1 },
-        { transform: 'scale(1.6)', opacity: 0 }
-      ];
-      s.animate(sparkleAnim, { duration: 600 + Math.random()*600, easing: 'ease-out' });
-      setTimeout(()=>s.remove(), 900 + Math.random()*800);
-    }
+    !achievements["Computer Engineer"]
+  ){
+    setTimeout(()=> unlockAchievement("Computer Engineer"), 1500);
   }
 }
-// -------------------- Tabs --------------------
-const mainContent = document.getElementById('main-content');
-window.openTab = function(tabId){
-  document.querySelectorAll('.tab-content').forEach(div => div.classList.remove('active'));
-  document.getElementById(tabId).classList.add('active');
-  if(tabId === 'journey') mainContent.classList.add('journey-active');
-  else mainContent.classList.remove('journey-active');
-  // unlockable actions on viewing tabs
-  if(tabId === 'dresscode') unlockAchievement('Interface Designer');
-  if(tabId === 'wishlist') unlockAchievement('System Scanner');
+
+function showToast(name){
+  const toast = document.getElementById("achievement-toast");
+  document.getElementById("toast-name").textContent = name;
+  toast.classList.add("show");
+  setTimeout(()=> toast.classList.remove("show"), 3800);
+}
+
+function spawnConfetti(){
+  for(let i=0;i<20;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left = (window.innerWidth-200 + Math.random()*150) + "px";
+    c.style.top = (80 + Math.random()*120) + "px";
+    document.body.appendChild(c);
+
+    setTimeout(()=> c.remove(), 1200);
+  }
+}
+
+/* -------------------- Tabs -------------------- */
+window.openTab=function(id){
+  document.querySelectorAll(".tab-content").forEach(t=> t.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+
+  if(id==="journey"){
+    document.getElementById("main-content").classList.add("journey-active");
+  } else {
+    document.getElementById("main-content").classList.remove("journey-active");
+  }
+
+  if(id==="dresscode") unlockAchievement("Interface Designer");
+  if(id==="wishlist") unlockAchievement("System Scanner");
 };
-// -------------------- Guestbook --------------------
+
+/* -------------------- Guestbook -------------------- */
 window.postMessage = async function(){
-  const name = document.getElementById('nameInput').value.trim() || 'Anonymous';
-  const message = document.getElementById('messageInput').value.trim();
+  const name = document.getElementById("nameInput").value || "Anonymous";
+  const message = document.getElementById("messageInput").value;
+
   if(!message) return;
-  await addDoc(collection(db, 'guestbook'), { name, text: message, date: new Date().toISOString() });
-  document.getElementById('nameInput').value = '';
-  document.getElementById('messageInput').value = '';
+
+  await addDoc(collection(db,"guestbook"),{
+    name,
+    text: message,
+    date: new Date().toISOString()
+  });
+
+  document.getElementById("nameInput").value = "";
+  document.getElementById("messageInput").value = "";
+
   await renderMessages();
-  unlockAchievement('Logger');
+  unlockAchievement("Logger");
 };
+
 async function renderMessages(){
-  const container = document.getElementById('messages');
-  container.innerHTML = '';
-  const q = query(collection(db, 'guestbook'), orderBy('date', 'desc'));
-  const snapshot = await getDocs(q);
-  snapshot.forEach(doc => {
-    const d = doc.data();
-    const div = document.createElement('div');
-    div.innerHTML = `<span class="bow">♡</span><strong>${d.name}</strong> • <span style='color:#555;font-size:0.85em'>${new Date(d.date).toLocaleString()}</span><p>${d.text}</p>`;
+  const container = document.getElementById("messages");
+  container.innerHTML="";
+
+  const q=query(collection(db,"guestbook"),orderBy("date","desc"));
+  const snap=await getDocs(q);
+
+  snap.forEach(doc=>{
+    const d=doc.data();
+    const div=document.createElement("div");
+    div.innerHTML = `
+      <strong>${d.name}</strong>
+      <span style='color:#555;font-size:0.8em'> • ${new Date(d.date).toLocaleString()}</span>
+      <p>${d.text}</p>
+    `;
     container.appendChild(div);
   });
 }
-// -------------------- Photos (Cloudinary upload) --------------------
+
+/* -------------------- Photos (Cloudinary) -------------------- */
 window.uploadPhoto = async function(){
-  const fileInput = document.getElementById('photoInput');
-  const file = fileInput.files[0];
-  if(!file) return alert('Please select a photo!');
-  const cloudName = 'dhnsjcgko';
-  const uploadPreset = 'Grad_2025_Gallery';
-  const formData = new FormData(); formData.append('file', file); formData.append('upload_preset', uploadPreset);
-  const uploadBtn = document.getElementById('uploadBtn'); uploadBtn.disabled = true; uploadBtn.textContent = 'Uploading... ⏳';
+  const file = document.getElementById("photoInput").files[0];
+  if(!file) return alert("Please select a photo!");
+
+  const cloudName = "dhnsjcgko";
+  const preset = "Grad_2025_Gallery";
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", preset);
+
+  const uploadBtn = document.getElementById("uploadBtn");
+  uploadBtn.disabled = true;
+  uploadBtn.textContent = "Uploading...";
+
   try{
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, { method: 'POST', body: formData });
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+      method:"POST",
+      body: formData
+    });
     const data = await res.json();
-    if(!res.ok || !data.secure_url) throw new Error(data.error?.message || 'Upload failed');
-    const url = data.secure_url;
-    const gallery = document.getElementById('gallery');
-    const img = document.createElement('img'); img.src = url; img.style.opacity = 0;
-    gallery.prepend(img); setTimeout(()=> img.style.opacity = 1, 80);
-    await addDoc(collection(db, 'photos'), { url, date: new Date().toISOString() });
-    fileInput.value = ''; uploadBtn.textContent = 'Upload Photo 📸'; uploadBtn.disabled = false;
-    await renderGallery();
-    unlockAchievement('Data Collector'); // unlock when photo uploaded
-  }catch(err){
-    console.error(err);
-    alert('❌ Photo upload failed');
-    uploadBtn.textContent = 'Upload Photo 📸'; uploadBtn.disabled = false;
+
+    const img = document.createElement("img");
+    img.src=data.secure_url;
+    document.getElementById("gallery").prepend(img);
+
+    await addDoc(collection(db,"photos"),{
+      url:data.secure_url,
+      date:new Date().toISOString()
+    });
+
+    uploadBtn.textContent="Upload Photo 📸";
+    uploadBtn.disabled=false;
+
+    unlockAchievement("Data Collector");
+    setupLightbox();
+
+  } catch(err){
+    alert("Upload failed!");
+    uploadBtn.disabled=false;
   }
 };
-async function renderGallery(){
-  const gallery = document.getElementById('gallery');
-  gallery.innerHTML = '';
-  const q = query(collection(db, 'photos'), orderBy('date', 'desc'));
-  const snapshot = await getDocs(q);
-  snapshot.forEach(doc => {
-    const img = document.createElement('img');
-    img.src = doc.data().url;
-    gallery.appendChild(img);
-  });
-  setupLightbox();
-}
-// -------------------- Lightbox --------------------
+
 function setupLightbox(){
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  document.querySelectorAll('#gallery img').forEach(img => {
-    img.onclick = () => { lightbox.style.display = 'flex'; lightboxImg.src = img.src; };
+  const lb=document.getElementById("lightbox");
+  const lbImg=document.getElementById("lightbox-img");
+
+  document.querySelectorAll("#gallery img").forEach(img=>{
+    img.onclick=()=>{
+      lb.style.display="flex";
+      lbImg.src=img.src;
+    };
   });
-  lightbox.onclick = (e) => { if(e.target !== lightboxImg) lightbox.style.display = 'none'; }
+
+  lb.onclick=(e)=>{
+    if(e.target!==lbImg) lb.style.display="none";
+  };
 }
-// -------------------- Cursor trail (kept intact) --------------------
+
+/* -------------------- Timeline Points -------------------- */
+document.querySelectorAll(".point").forEach(point=>{
+  point.addEventListener("mouseenter",()=>{
+    document.getElementById("journey-img").src = point.dataset.img;
+    document.getElementById("journey-desc").textContent = point.dataset.desc;
+    document.getElementById("journey-img").style.display="block";
+    unlockAchievement("Process Tracker");
+  });
+
+  point.addEventListener("mouseleave",()=>{
+    document.getElementById("journey-img").style.display="none";
+    document.getElementById("journey-desc").textContent="";
+  });
+});
+
+/* -------------------- Cursor Trail -------------------- */
 const blackBow='https://media.tenor.com/eGCjV7lEokoAAAAj/black-bow.gif';
-const whiteBow='invertedwhitebow.gif'; // keep this in your folder or change to a hosted white-gif
+const whiteBow='invertedwhitebow.gif';
 
 function getBgColor(elem){
   while(elem){
-    const color = window.getComputedStyle(elem).backgroundColor;
-    if(color && color !== 'rgba(0, 0, 0, 0)' && color !== 'transparent') return color;
-    elem = elem.parentElement;
+    const c=window.getComputedStyle(elem).backgroundColor;
+    if(c && c!=="rgba(0,0,0,0)" && c!=="transparent") return c;
+    elem=elem.parentElement;
   }
-  return 'rgb(255,255,255)';
+  return "rgb(255,255,255)";
 }
-function getLuminance(rgb){
-  const m = rgb.match(/(\d+),\s*(\d+),\s*(\d+)/);
-  if(!m) return 255;
-  const r = parseInt(m[1]), g = parseInt(m[2]), b = parseInt(m[3]);
-  return 0.299*r + 0.587*g + 0.114*b;
+
+function luminance(rgb){
+  const m=rgb.match(/\d+/g);
+  const [r,g,b]=m.map(Number);
+  return 0.299*r+0.587*g+0.114*b;
 }
-document.addEventListener('mousemove', e => {
-  const img = document.createElement('img');
-  img.src = (getLuminance(getBgColor(document.elementFromPoint(e.clientX, e.clientY))) < 128) ? whiteBow : blackBow;
-  img.style.position = 'absolute';
-  img.style.left = e.pageX - 12 + 'px';
-  img.style.top = e.pageY - 12 + 'px';
-  img.style.width = '25px';
-  img.style.height = '25px';
-  img.style.pointerEvents = 'none';
-  img.style.zIndex = 9999;
-  img.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
-  img.style.opacity = '1';
+
+function spawnBow(x,y,isDark){
+  const img=document.createElement("img");
+  img.src=isDark?whiteBow:blackBow;
+  img.style.position="absolute";
+  img.style.left=x+"px";
+  img.style.top=y+"px";
+  img.style.width="25px";
+  img.style.height="25px";
+  img.style.pointerEvents="none";
+  img.style.zIndex=9999;
+  img.style.transition="opacity 1s ease-out, transform 1s ease-out";
+  img.style.opacity="1";
+
   document.body.appendChild(img);
-  setTimeout(()=>{ img.style.opacity='0'; img.style.transform='scale(0.6) rotate(20deg)'; setTimeout(()=>img.remove(),1000); }, 0);
+
+  setTimeout(()=>{
+    img.style.opacity="0";
+    img.style.transform="scale(0.6)";
+    setTimeout(()=>img.remove(),1000);
+  },0);
+}
+
+document.addEventListener("mousemove",e=>{
+  const isDark = luminance(getBgColor(document.elementFromPoint(e.clientX,e.clientY))) < 128;
+  spawnBow(e.pageX-12,e.pageY-12,isDark);
 });
 
-document.addEventListener('touchmove', e => {
-  const touch = e.touches[0];
-  if(!touch) return;
-
-  const img = document.createElement('img');
-  img.src = (getLuminance(getBgColor(document.elementFromPoint(touch.clientX, touch.clientY))) < 128) ? whiteBow : blackBow;
-  img.style.position = 'absolute';
-  img.style.left = touch.pageX - 12 + 'px';
-  img.style.top = touch.pageY - 12 + 'px';
-  img.style.width = '25px';
-  img.style.height = '25px';
-  img.style.pointerEvents = 'none';
-  img.style.zIndex = 9999;
-  img.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
-  img.style.opacity = '1';
-  document.body.appendChild(img);
-  setTimeout(() => {
-    img.style.opacity = '0';
-    img.style.transform = 'scale(0.6) rotate(20deg)';
-    setTimeout(() => img.remove(), 1000);
-  }, 0);
-}, { passive: true }); // passive: true allows finger scrolling
-
-
-// -------------------- Timeline points (unlock on hover) --------------------
-const timelinePoints = document.querySelectorAll('.point');
-timelinePoints.forEach(point => {
-  point.addEventListener('mouseenter', () => {
-    const img = document.getElementById('journey-img');
-    const desc = document.getElementById('journey-desc');
-    img.src = point.getAttribute('data-img');
-    desc.textContent = point.getAttribute('data-desc');
-    img.style.display = 'block';
-    unlockAchievement('Process Tracker');
-  });
-
-  point.addEventListener('mouseleave', () => {
-    const img = document.getElementById('journey-img');
-    const desc = document.getElementById('journey-desc');
-    img.style.display = 'none';
-    desc.textContent = '';
-  });
-});
-
-function positionLEDsInsidePoints() {
-  const points = document.querySelectorAll('.point');
-
-  // Remove old LEDs
-  document.querySelectorAll('.point .timeline-led').forEach(l => l.remove());
-
-  points.forEach(point => {
-    const led = document.createElement('div');
-    led.className = 'timeline-led';
-    led.style.position = 'absolute';
-    led.style.zIndex = '0'; // behind point
-    led.style.width = '16px';
-    led.style.height = '16px';
-    
-    // Position LED centered inside point
-    led.style.left = '50%';
-    led.style.top = '50%';
-    led.style.transform = 'translate(-50%, -50%)';
-
-    point.appendChild(led); // append LED inside the point
-  });
-}
-
-positionLEDsInsidePoints();
-window.addEventListener('resize', positionLEDsInsidePoints);
-let pulseTime = 0;
-function pulseTimelineLEDsSmooth(timestamp){
-  const leds = document.querySelectorAll('.timeline-led');
-  if(leds.length === 0) return;
-
-  pulseTime += 0.02; // speed of pulse
-  leds.forEach((led, i)=>{
-    const phase = (i / leds.length) * Math.PI * 2;
-    const scale = 1 + 0.3 * Math.sin(pulseTime + phase);
-    const opacity = 0.3 + 0.7 * Math.sin(pulseTime + phase) ** 2;
-    led.style.transform = `translate(-50%, -50%) scale(${scale})`;
-    led.style.opacity = opacity;
-    // optional: animate box-shadow for glow intensity
-    const glow = 6 + 6 * Math.sin(pulseTime + phase);
-    led.style.boxShadow = `0 0 ${14+glow}px ${glow}px rgba(255,255,255,0.5)`;
-  });
-
-  requestAnimationFrame(pulseTimelineLEDsSmooth);
-}
-
-requestAnimationFrame(pulseTimelineLEDsSmooth);
-
-
-// -------------------- Canvas 'PCB' (keeps visuals) --------------------
-const canvas = document.getElementById('journey-bg');
-const ctx = canvas?.getContext ? canvas.getContext('2d') : null;
-let particles = [];
-function resizeCanvas(){
-  if(!canvas) return;
-  canvas.width = document.getElementById('main-content').offsetWidth;
-  canvas.height = document.getElementById('main-content').offsetHeight;
-  generateParticles();
-  drawPCB();
-}
-window.addEventListener('resize', resizeCanvas);
-function generateParticles(){
-  particles = [];
-  for(let i=0;i<50;i++){
-    particles.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, length: 20+Math.random()*50, vertical: Math.random()<0.5, speed:1+Math.random()*1.5});
-  }
-}
-function drawPCB(){
-  if(!ctx) return;
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  for(const p of particles){
-    ctx.strokeStyle = 'rgba(255,255,255,' + (0.9 + Math.random()*0.12) + ')';
-    ctx.lineWidth = 1 + Math.random()*1;
-    ctx.beginPath();
-    if(p.vertical) ctx.moveTo(p.x,p.y), ctx.lineTo(p.x,p.y+p.length);
-    else ctx.moveTo(p.x,p.y), ctx.lineTo(p.x+p.length,p.y);
-    ctx.stroke();
-  }
-}
-function animatePCB(){
-  drawPCB();
-  for(const p of particles){
-    if(p.vertical){ p.y += p.speed; if(p.y > canvas.height) p.y = -p.length; }
-    else { p.x += p.speed; if(p.x > canvas.width) p.x = -p.length; }
-  }
-  requestAnimationFrame(animatePCB);
-}
-animatePCB();
-// -------------------- Init on load --------------------
-window.onload = () => {
-  renderMessages();
-  renderGallery();
-  resizeCanvas();
-
+/* -------------------- Invitation Screen -------------------- */
+const screen=document.getElementById("launch-screen");
+screen.onclick=()=>{
+  screen.style.animation="fadeOut 1s forwards";
+  setTimeout(()=>{
+    screen.remove();
+    unlockAchievement("Hello, World!");
+  },500);
 };
-// --- Invitation Launch Screen ---
-const launchScreen = document.getElementById('launch-screen');
-launchScreen.addEventListener('click', () => {
-  launchScreen.style.animation = 'fadeOut 1s forwards';
-  setTimeout(() => {
-    launchScreen.remove();
-    unlockAchievement('Hello, World!'); // trigger welcome achievement
-  }, 500);
-});
+
+/* -------------------- Init -------------------- */
+window.onload=()=>{
+  renderMessages();
+  setupLightbox();
+};
 
 </script>
-<!-- 🎮 Minecraft-style Achievement Sidebar -->
+
+<!-- ACHIEVEMENTS SIDEBAR -->
 <div id="achievement-sidebar">
-  <div id="achievements-unlocked">
-    <h3>Achievements</h3>
-    <div id="achievements-list"></div>
-  </div>
-  <div id="sidebar-toggle"></div>
-  <div id="achievement-list"></div>
+  <h3 style="text-align:center;font-size:14px;">Achievements</h3>
+  <div id="achievements-list"></div>
 </div>
 
-<!-- Popup for unlock -->
-<div id="achievement-popup">
-  <div id="achievement-popup-inner">
-    <span id="achievement-popup-title">Achievement Get!</span>
-    <span id="achievement-popup-text"></span>
-  </div>
-</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
