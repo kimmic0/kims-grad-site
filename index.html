@@ -493,6 +493,19 @@ footer p {
     pointer-events: auto !important;
   }
 }
+/* ✅ MOBILE FIX — Make tabs fit on ANY phone screen */
+@media (max-width: 500px) {
+  .tab {
+    padding: 8px 14px;        /* smaller buttons */
+    font-size: 18px;          /* smaller text */
+    margin: 4px;              /* more room */
+  }
+
+  .tabs {
+    padding: 6px 0;           /* reduce bar height */
+    gap: 4px;
+  }
+}
 
 /* End of CSS */
 </style>
@@ -846,62 +859,84 @@ document.querySelectorAll(".point").forEach(point=>{
   });
 });
 
-/* -------------------- Cursor Trail -------------------- */
-const blackBow='https://media.tenor.com/eGCjV7lEokoAAAAj/black-bow.gif';
-const whiteBow='invertedwhitebow.gif';
+/* -------------------- Optimized Cursor & Touch Bow Trail -------------------- */
 
-function getBgColor(elem){
-  while(elem){
-    const c=window.getComputedStyle(elem).backgroundColor;
-    if(c && c!=="rgba(0,0,0,0)" && c!=="transparent") return c;
-    elem=elem.parentElement;
+const blackBow = "https://media.tenor.com/eGCjV7lEokoAAAAj/black-bow.gif";
+const whiteBow = "invertedwhitebow.gif"; // your white gif (local or hosted)
+
+/* ✅ Strong background color reader */
+function getBgColor(elem) {
+  while (elem) {
+    const style = window.getComputedStyle(elem);
+
+    // Solid background color
+    if (style.backgroundColor !== "rgba(0, 0, 0, 0)" &&
+        style.backgroundColor !== "transparent") {
+      return style.backgroundColor;
+    }
+
+    // If there's a background image → assume dark
+    if (style.backgroundImage !== "none") return "rgb(0,0,0)";
+
+    elem = elem.parentElement;
   }
   return "rgb(255,255,255)";
 }
 
-function luminance(rgb){
-  const m=rgb.match(/\d+/g);
-  const [r,g,b]=m.map(Number);
-  return 0.299*r+0.587*g+0.114*b;
+/* ✅ Accurate luminance calculation */
+function getLuminance(rgb) {
+  const m = rgb.match(/(\d+),\s*(\d+),\s*(\d+)/);
+  if (!m) return 255;
+  const r = +m[1], g = +m[2], b = +m[3];
+  return 0.299 * r + 0.587 * g + 0.114 * b;
 }
 
-function spawnBow(x,y,isDark){
-  const img=document.createElement("img");
-  img.src=isDark?whiteBow:blackBow;
-  img.style.position="absolute";
-  img.style.left=x+"px";
-  img.style.top=y+"px";
-  img.style.width="25px";
-  img.style.height="25px";
-  img.style.pointerEvents="none";
-  img.style.zIndex=9999;
-  img.style.transition="opacity 1s ease-out, transform 1s ease-out";
-  img.style.opacity="1";
+/* ✅ Shared bow spawn function (used by both mouse + touch) */
+function spawnBowTrail(x, y) {
+  const targetElem = document.elementFromPoint(x, y);
+  const bgColor = getBgColor(targetElem);
+  const isDark = getLuminance(bgColor) < 128;
 
-  document.body.appendChild(img);
+  const bow = document.createElement("img");
+  bow.src = isDark ? whiteBow : blackBow;
 
-  setTimeout(()=>{
-    img.style.opacity="0";
-    img.style.transform="scale(0.6)";
-    setTimeout(()=>img.remove(),1000);
-  },0);
+  bow.style.position = "absolute";
+  bow.style.left = x - 12 + "px";
+  bow.style.top = y - 12 + "px";
+  bow.style.width = "25px";
+  bow.style.height = "25px";
+  bow.style.pointerEvents = "none";
+  bow.style.zIndex = 9999;
+  bow.style.opacity = "1";
+  bow.style.transition = "opacity .7s ease-out, transform .7s ease-out";
+
+  document.body.appendChild(bow);
+
+  // Smooth fade-out and scale
+  requestAnimationFrame(() => {
+    bow.style.opacity = "0";
+    bow.style.transform = "scale(0.6) rotate(18deg)";
+  });
+
+  // Clean removal to prevent memory leaks
+  setTimeout(() => bow.remove(), 800);
 }
 
-document.addEventListener("mousemove",e=>{
-  const isDark = luminance(getBgColor(document.elementFromPoint(e.clientX,e.clientY))) < 128;
-  spawnBow(e.pageX-12,e.pageY-12,isDark);
+/* ✅ Desktop mouse trail */
+document.addEventListener("mousemove", (e) => {
+  spawnBowTrail(e.clientX, e.clientY);
 });
-// ✅ Allow bow cursor to follow your finger without breaking tab taps
-document.addEventListener('touchmove', e => {
-  const touch = e.touches[0];
-  if (!touch) return;
 
-  const isDark =
-    luminance(getBgColor(document.elementFromPoint(touch.clientX, touch.clientY))) < 128;
-
-  spawnBow(touch.pageX - 12, touch.pageY - 12, isDark);
-
-}, { passive: true });  // ✅ Important: preserves tap + scrolling!
+/* ✅ Mobile touch trail (the key to restoring old behavior) */
+document.addEventListener(
+  "touchmove",
+  (e) => {
+    const t = e.touches[0];
+    if (!t) return;
+    spawnBowTrail(t.clientX, t.clientY);
+  },
+  { passive: true } // ✅ prevents blocking taps or scrolling
+);
 
 /* -------------------- Invitation Screen -------------------- */
 const screen=document.getElementById("launch-screen");
@@ -929,5 +964,6 @@ window.onload=()=>{
 
 </body>
 </html>
+
 
 
