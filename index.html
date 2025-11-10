@@ -691,12 +691,15 @@ function setupLightbox(){
 /* -------------------- Timeline Hover -------------------- */
 document.querySelectorAll(".point").forEach(point=>{
   point.addEventListener("mouseenter",()=>{
+point.addEventListener("mouseenter",()=>{
     const img = document.getElementById("journey-img");
     const desc = document.getElementById("journey-desc");
-    img.src = point.dataset.img;
+    
+    img.style.display = "none";  // ✅ HIDE IMAGE COMPLETELY
     desc.textContent = point.dataset.desc;
-    img.style.display="block";
     unlockAchievement("Process Tracker");
+});
+
   });
   point.addEventListener("mouseleave",()=>{
     document.getElementById("journey-img").style.display="none";
@@ -873,5 +876,6 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
 
