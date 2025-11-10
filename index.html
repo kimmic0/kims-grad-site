@@ -510,21 +510,27 @@ footer p {
     pointer-events: auto !important;
   }
 }
-/* ✅ Desktop hover + sidebar expansion enabled */
-@media (hover: hover) and (min-width: 600px) {
-  #achievement-sidebar,
-  #achievement-sidebar * {
-    pointer-events: auto !important;
-  }
-}
-
-/* ✅ MOBILE ONLY — shrink sidebar + disable hover expansion */
+/* ✅ MOBILE SIDEBAR — tap to open/close */
 @media (max-width: 600px) {
   #achievement-sidebar {
     width: 26px !important;
     padding: 4px 0 !important;
+    transition: .3s ease;
+  }
+
+  /* Prevent hover from triggering on mobile */
+  #achievement-sidebar:hover {
+    width: 26px !important;
+    padding: 4px 0 !important;
+  }
+
+  /* When expanded (we set this using JS below) */
+  #achievement-sidebar.mobile-open {
+    width: 70% !important;
+    padding: 8px !important;
   }
 }
+
 /* End of CSS */
 </style>
 </head>
@@ -1079,6 +1085,7 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
 
 
