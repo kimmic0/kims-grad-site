@@ -4,19 +4,38 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<!-- ✅ Your Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Asap+Condensed&family=Monsieur+La+Doulaise&family=Alumni+Sans&family=Silkscreen&family=Libre+Bodoni:wght@400;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
 <title>Kim’s Graduation 🎓</title>
 
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Asap+Condensed&family=Monsieur+La+Doulaise&family=Alumni+Sans&family=Silkscreen&family=Libre+Bodoni:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 <style>
-/* === Invitation Launch Page === */
+/* ------------------- Root + Base ------------------- */
+:root {
+  --bw-1:#000;
+  --bw-2:#111;
+  --bw-3:#333;
+  --bw-4:#fff;
+  --accent:#dedede;
+}
+
+html, body {
+  margin:0;
+  padding:0;
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  font-family:'Alumni Sans', sans-serif;
+  background:var(--bw-4);
+  color:var(--bw-1);
+  text-align:center;
+}
+
+/* ------------------- Launch Screen ------------------- */
 #launch-screen {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  inset: 0;
   background: radial-gradient(circle, #000 60%, #111);
   color: white;
   display: flex;
@@ -27,87 +46,27 @@
   cursor: pointer;
   animation: fadeIn 1s ease forwards;
 }
-
-.invite-box {
-  text-align: center;
-  animation: float 2s ease-in-out infinite alternate;
-}
-
+.invite-box { text-align: center; animation: float 2s ease-in-out infinite alternate; }
 #launch-screen h1 {
   font-family: 'Monsieur La Doulaise', cursive;
-  margin: 0 auto;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
   text-shadow: 0 0 10px white;
 }
+#launch-screen p { font-size: 1.5rem; letter-spacing: 1px; color: #ddd; }
+.envelope { font-size: 5rem; margin-top: 20px; animation: pulse 1.5s infinite; }
 
-#launch-screen p {
-  font-family: 'Alumni Sans', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-  color: #ddd;
-}
+@keyframes float { from { transform: translateY(-10px); } to { transform: translateY(10px); } }
+@keyframes pulse { 0%,100% { transform: scale(1); opacity:1 } 50% { transform: scale(1.2); opacity:.7 } }
+@keyframes fadeOut { to { opacity:0; visibility:hidden } }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
-.envelope {
-  font-size: 5rem;
-  margin-top: 20px;
-  animation: pulse 1.5s infinite;
-}
-
-/* Animations */
-@keyframes float {
-  from { transform: translateY(-10px); }
-  to   { transform: translateY(10px); }
-}
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50%      { transform: scale(1.2); opacity: 0.7; }
-}
-@keyframes fadeOut {
-  to { opacity: 0; visibility: hidden; }
-}
-
-/* --- Base styles --- */
-:root {
-  --bw-1:#000;
-  --bw-2:#111;
-  --bw-3:#333;
-  --bw-4:#fff;
-  --accent:#dedede;
-}
-
-body {
-  margin:0;
-  padding:0;
-  width:100%;
-  overflow-x:hidden;
-  font-family:'Alumni Sans', sans-serif;
-  background:var(--bw-4);
-  color:var(--bw-1);
-  text-align:center;
-}
-/* ✅ Kill side-scroll on ALL devices */
-html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden !important;
-}
-
-/* ✅ Prevent timeline from causing overflow */
-.timeline-container,
-.timeline,
-.point {
-  max-width: 100% !important;
-  overflow-x: hidden !important;
-}
-
-/* ✅ HEADER – FIXED, CLEAN, NO GAP */
+/* ------------------- Header ------------------- */
 header {
-  padding: 40px 20px 0px;
+  padding: 40px 20px 0;
   margin: 0;
   border-bottom: 2px solid var(--bw-1);
   background-color: var(--bw-4);
 }
-
 header h1 {
   margin: 0;
   padding: 0;
@@ -116,35 +75,14 @@ header h1 {
   letter-spacing: 1px;
   line-height: 1.2;
 }
+header h1 img { display:block; margin:10px auto 0; width:60px; height:auto; }
+header p { margin: 0; padding: 0; font-size: 30px; font-weight: bold; color: #333; line-height: 1.1; }
 
-header h1 img {
-  display: block;
-  margin: 10px auto 0;
-  width: 60px;
-  height: auto;
-}
-/* ✅ Make section titles bigger on ALL screens */
-h2 {
-  font-size: 48px !important; /* bigger than before */
-  font-weight: 700;
-  font-family: 'Alumni Sans', sans-serif !important;
-}
+/* Section titles + text */
+h2 { font-size: 48px; font-weight: 700; font-family: 'Alumni Sans', sans-serif; }
+p  { font-size: 26px; line-height: 1.4; }
 
-header p {
-  margin: 0;
-  padding: 0;
-  font-size: 30px;
-  font-weight: bold;
-  color: #333;
-  line-height: 1.1;
-}
-/* ✅ Restore large elegant paragraph text */
-p {
-  font-size: 26px !important;
-  line-height: 1.4;
-}
-
-/* --- Tabs --- */
+/* ------------------- Tabs ------------------- */
 .tabs {
   font-family: 'Asap Condensed';
   display:flex;
@@ -152,11 +90,10 @@ p {
   flex-wrap:wrap;
   background-color:var(--bw-1);
   padding:10px 0;
-  margin:0; /* ✅ Fixes the gap */
+  margin:0;
   border-top: 2px solid var(--bw-1);
   border-bottom: 2px solid var(--bw-1);
 }
-
 .tab {
   font-family: 'Asap Condensed';
   background:linear-gradient(120deg,var(--bw-4) 0%, #ccc 30%, var(--bw-4) 50%);
@@ -170,308 +107,17 @@ p {
   cursor:pointer;
   transition:.3s ease;
 }
-
-.tab:hover {
-  animation:shine 1.2s linear infinite;
-  transform:scale(1.05);
-}
+.tab:hover { animation:shine 1.2s linear infinite; transform:scale(1.05); }
+@keyframes shine { 0%{background-position:-200% center;} 100%{background-position:200% center;} }
 
 .tab-content {
   width: 100%;
   max-width: 900px;
+  margin: 0 auto;
   display:none;
   padding:20px 10px;
   animation:fadeIn .4s ease;
 }
-
-.active { display:block; }
-
-@keyframes shine {
-  0%{background-position:-200% center;}
-  100%{background-position:200% center;}
-}
-
-@keyframes fadeIn {
-  from{opacity:0}
-  to{opacity:1}
-}
-
-/* Inputs */
-input, textarea {
-  border-radius:10px;
-  border:1px solid #aaa;
-  padding:10px;
-  font-size:16px;
-  margin-top:10px;
-}
-input{ width:50%; }
-textarea{ width:80%; height:100px; }
-
-/* Buttons */
-button {
-  border:none;
-  padding:10px 25px;
-  border-radius:30px;
-  background:linear-gradient(120deg,var(--bw-1), #444, #999, #444, var(--bw-1));
-  background-size:200% auto;
-  color:var(--bw-4);
-  margin-top:10px;
-  font-size:16px;
-  cursor:pointer;
-  transition:.3s ease;
-}
-button:hover {
-  animation:shine 1.3s linear infinite;
-  transform:scale(1.05);
-}
-
-/* Gallery */
-#gallery img {
-  width:200px;
-  border-radius:15px;
-  border:2px solid var(--bw-1);
-  margin:10px;
-  transition:.3s ease;
-  cursor:pointer;
-}
-#gallery img:hover { transform:scale(1.05); }
-
-/* Main content + journey background */
-#main-content {
-  position:relative;
-  z-index:1;
-  min-height:400px;
-  transition:background .5s ease;
-}
-
-.journey-active {
-  background-color:var(--bw-1);
-  color:var(--bw-4);
-}
-
-.journey-bg {
-  position:absolute;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  opacity:0;
-  transition:.4s ease;
-}
-
-.journey-active .journey-bg {
-  opacity:1;
-}
-
-/* Timeline */
-.timeline-container {
-  width:100vw;
-  padding:60px 0;
-  overflow-x:auto;
-}
-
-.timeline {
-  display:flex;
-  flex-wrap:wrap;
-  gap:40px;
-  justify-content:center;
-}
-
-.point {
-  width:20px;
-  height:20px;
-  background:white;
-  border:2px solid silver;
-  border-radius:50%;
-  cursor:pointer;
-  position:relative;
-  transition:.3s ease;
-  z-index:2;
-}
-.point:hover {
-  transform:scale(1.2);
-  box-shadow:0 0 12px rgba(200,200,200,0.8);
-}
-
-.timeline-led {
-  position:absolute;
-  top:50%; left:50%;
-  width:16px; height:16px;
-  background:white;
-  border-radius:50%;
-  transform:translate(-50%,-50%);
-  pointer-events:none;
-  opacity:.4;
-  z-index:1;
-}
-
-/* Journey display */
-#journey-display img {
-  max-width:80%;
-  border-radius:12px;
-  border:2px solid #fff;
-  display:none;
-  margin-top:20px;
-}
-#journey-display p {
-  color:white;
-  font-size:1.1em;
-  margin-top:10px;
-}
-
-/* Footer */
-footer {
-  background:var(--bw-1);
-  padding:20px;
-  color:var(--bw-4);
-  position:relative;
-  overflow:hidden;
-}
-footer::before {
-  content:"";
-  position:absolute;
-  top:0; left:50%;
-  width:100vw;
-  height:100%;
-  background:var(--bw-1);
-  transform:translateX(-50%);
-  z-index:-1;
-}
-
-footer p {
-  animation:neonPulse 1.8s ease-in-out infinite alternate;
-  margin:5px 0;
-}
-
-/* Neon animation */
-@keyframes neonPulse {
-  0%,100%{
-    text-shadow:
-      0 0 5px #fff,
-      0 0 10px #fff,
-      0 0 20px #fff;
-  }
-  50%{
-    text-shadow:
-      0 0 10px #fff,
-      0 0 20px #fff,
-      0 0 40px #fff;
-  }
-}
-
-/* Lightbox */
-#lightbox {
-  display:none;
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:rgba(0,0,0,0.85);
-  justify-content:center;
-  align-items:center;
-  z-index:10000;
-}
-#lightbox img {
-  max-width:90%;
-  max-height:90%;
-  border-radius:15px;
-  border:2px solid #fff;
-}
-
-/* === Achievements Sidebar === */
-#achievement-sidebar {
-  position: fixed;
-  top: 220px;
-  right: 0;
-  width: 40px;
-  background: linear-gradient(#111, #000);
-  border-left: 3px solid #666;
-  padding: 8px 0;
-  border-radius: 8px 0 0 8px;
-  font-family: "Press Start 2P", monospace;
-  color: white;
-  z-index: 9999;
-  transition: .3s ease;
-}
-#achievement-sidebar:hover {
-  width: 47%;
-  padding: 8px;
-}
-
-#achievements-list {
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.achievement {
-  background: linear-gradient(#222,#111);
-  padding:6px;
-  width: calc(100% - 12px);
-  border:3px solid #000;
-  border-left-width:6px;
-  border-top-width:6px;
-  display:flex;
-  gap:8px;
-  align-items:center;
-  color:white;
-}
-
-.achievement .icon {
-  width:34px;
-  height:34px;
-  background:#fff;
-  border:2px solid #000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-#achievement-toast {
-  position:fixed;
-  left:50%;
-  top:72px;
-  transform:translateX(-50%);
-  background:#1f1f1f;
-  border:4px solid #000;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:8px 14px;
-  border-radius:4px;
-  font-family:monospace;
-  opacity:0;
-  transition:.25s ease;
-  z-index:100000;
-}
-#achievement-toast.show {
-  opacity:1;
-  top:92px;
-}
-
-.confetti {
-  position:fixed;
-  width:8px;
-  height:8px;
-  background:#9e9e9e;
-  opacity:0.95;
-  z-index:100001;
-}
-
-.sparkle {
-  position:fixed;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  box-shadow:0 0 8px #fff;
-  opacity:.9;
-}
-@media (max-width: 500px){
-  header h1 {
-    font-size: 34px !important;
-  }
-}
-/* ✅ Make all paragraphs fit ANY screen width */
 .tab-content p {
   max-width: 90%;
   margin: 0 auto 20px;
@@ -480,63 +126,161 @@ footer p {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
+.active { display:block; }
 
-/* ✅ Re-enable interaction ONLY on desktop hover */
+/* ------------------- Main & Journey BG ------------------- */
+#main-content { position:relative; z-index:1; min-height:400px; transition:background .5s ease; }
+.journey-active { background-color:var(--bw-1); color:var(--bw-4); }
+.journey-bg {
+  position:absolute; inset:0;
+  pointer-events:none; opacity:0; transition:.4s ease;
+}
+.journey-active .journey-bg { opacity:1; }
+
+/* ------------------- Timeline ------------------- */
+.timeline-container { width:100vw; padding:60px 0; overflow-x:auto; }
+.timeline { display:flex; flex-wrap:wrap; gap:40px; justify-content:center; }
+.point {
+  width:20px; height:20px; background:white; border:2px solid silver; border-radius:50%;
+  cursor:pointer; position:relative; transition:.3s ease; z-index:2;
+}
+.point:hover { transform:scale(1.2); box-shadow:0 0 12px rgba(200,200,200,0.8); }
+
+.timeline-led {
+  position:absolute; top:50%; left:50%; width:16px; height:16px; background:white; border-radius:50%;
+  transform:translate(-50%,-50%); pointer-events:none; opacity:.4; z-index:1;
+}
+
+/* Journey display */
+#journey-display img {
+  max-width:80%; border-radius:12px; border:2px solid #fff; display:none; margin-top:20px;
+}
+#journey-display p { color:white; font-size:1.1em; margin-top:10px; }
+
+/* ------------------- Footer ------------------- */
+footer {
+  background:var(--bw-1); padding:20px; color:var(--bw-4);
+  position:relative; overflow:hidden;
+}
+footer::before {
+  content:""; position:absolute; inset:0; left:50%;
+  width:100vw; height:100%; background:var(--bw-1); transform:translateX(-50%); z-index:-1;
+}
+footer p { animation:neonPulse 1.8s ease-in-out infinite alternate; margin:5px 0; }
+@keyframes neonPulse {
+  0%,100%{ text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 20px #fff; }
+  50%   { text-shadow:0 0 10px #fff,0 0 20px #fff,0 0 40px #fff; }
+}
+
+/* ------------------- Lightbox ------------------- */
+#lightbox {
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85);
+  justify-content:center; align-items:center; z-index:10000;
+}
+#lightbox img { max-width:90%; max-height:90%; border-radius:15px; border:2px solid #fff; }
+
+/* ------------------- Achievement Sidebar (pixel) ------------------- */
+#achievement-sidebar {
+  position: fixed; top: 220px; right: 0;
+  width: 40px; /* collapsed */
+  background: linear-gradient(#111, #000);
+  border-left: 3px solid #666;
+  padding: 8px 0;
+  border-radius: 8px 0 0 8px;
+  font-family: "Press Start 2P", monospace;
+  color: white;
+  z-index: 9999;
+  transition: width .25s ease, padding .25s ease, transform .25s ease;
+  box-shadow: -6px 6px 0 #000 inset;
+}
+
+/* Desktop: expand on hover */
 @media (hover: hover) {
-  #achievement-sidebar:hover,
-  #achievement-sidebar:hover * {
-    pointer-events: auto !important;
-  }
-}
-/* ✅ MOBILE FIX — Make tabs fit on ANY phone screen */
-@media (max-width: 500px) {
-  .tab {
-    padding: 8px 14px;        /* smaller buttons */
-    font-size: 18px;          /* smaller text */
-    margin: 4px;              /* more room */
-  }
-
-  .tabs {
-    padding: 6px 0;           /* reduce bar height */
-    gap: 4px;
-  }
+  #achievement-sidebar:hover { width: 320px; padding: 8px; }
 }
 
-
-/* ✅ Desktop: sidebar works normally */
-@media (hover: hover) {
-  #achievement-sidebar,
-  #achievement-sidebar * {
-    pointer-events: auto !important;
-  }
-}
-/* ✅ MOBILE SIDEBAR — tap to open/close */
+/* Mobile default: smaller collapsed */
 @media (max-width: 600px) {
-  #achievement-sidebar {
-    width: 26px !important;
-    padding: 4px 0 !important;
-    transition: .3s ease;
-  }
-
-  /* Prevent hover from triggering on mobile */
-  #achievement-sidebar:hover {
-    width: 26px !important;
-    padding: 4px 0 !important;
-  }
-
-  /* When expanded (we set this using JS below) */
-  #achievement-sidebar.mobile-open {
-    width: 70% !important;
-    padding: 8px !important;
-  }
+  #achievement-sidebar { width: 26px; padding: 4px 0; }
 }
-/* End of CSS */
+
+/* Mobile: expanded when tapped (class added via JS) */
+#achievement-sidebar.mobile-open {
+  width: 80vw; max-width: 360px; padding: 8px;
+}
+
+/* A visible little grabber/handle always tappable */
+#sidebar-toggle {
+  position: absolute; left: -16px; top: 12px;
+  width: 16px; height: 40px; border-radius: 8px 0 0 8px;
+  background: #000; border:2px solid #666; border-right:none;
+  box-shadow: -2px 0 0 #000 inset;
+  cursor: pointer;
+  display: flex; align-items:center; justify-content:center;
+}
+#sidebar-toggle:after { content: "≡"; color:#fff; font-size: 12px; }
+
+/* Inside list */
+#achievements-list { display:flex; flex-direction:column; gap:6px; padding: 8px; }
+.achievement {
+  background: linear-gradient(#222,#111);
+  padding:6px; width: 100%;
+  border:3px solid #000; border-left-width:6px; border-top-width:6px;
+  display:flex; gap:8px; align-items:center; color:white; box-shadow: 3px 3px 0 #000; image-rendering: pixelated;
+}
+.achievement .icon {
+  width:34px; height:34px; background:#fff; border:2px solid #000;
+  display:flex; align-items:center; justify-content:center; font-weight:900; color:#111; image-rendering: pixelated;
+}
+#achievements-unlocked h3 {
+  margin: 0 0 6px; text-align: center; font-size: 14px; text-decoration: underline; color: var(--bw-4); letter-spacing: 1px;
+}
+
+/* ------------------- Achievement Toast (Minecraft-like) ------------------- */
+#achievement-toast {
+  position:fixed; left:50%; top:72px; transform:translateX(-50%);
+  background:#1f1f1f; border:4px solid #000; color:#fff;
+  display:flex; align-items:center; gap:12px;
+  padding:8px 14px; border-radius:4px; font-family:monospace;
+  box-shadow:0 0 10px #000; opacity:0; z-index:100000;
+  transition:opacity .25s ease, top .25s ease;
+  image-rendering: pixelated;
+}
+#achievement-toast .text .title{ font-size:12px; color:#cfcfcf; margin:0; }
+#achievement-toast .text .name{ font-size:16px; margin:0; font-weight:700; color:#fff; }
+#achievement-toast.show{ opacity:1; top:92px; }
+
+/* ------------------- Popup (Old style restored) ------------------- */
+#achievement-popup {
+  position: fixed; bottom: 40px; left: 40px;
+  display: none; z-index: 10000; animation: slideIn 0.4s ease-out;
+}
+#achievement-popup-inner {
+  background: linear-gradient(to bottom, #222, #000);
+  color: white; padding: 10px 20px; border: 2px solid #888; border-radius: 6px;
+  font-family: "Press Start 2P", monospace; box-shadow: 0 0 8px #777;
+}
+#achievement-popup-title {
+  color: #bbb; font-size: 10px; display: block; margin-bottom: 6px; letter-spacing: 1px;
+}
+#achievement-popup-text { font-size: 12px; color: #fff; text-shadow: 0 0 4px #aaa; }
+@keyframes slideIn { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* ------------------- Confetti & Sparkles ------------------- */
+.confetti { position:fixed; width:8px; height:8px; background:#9e9e9e; opacity:0.95; z-index:100001; border-radius:2px; }
+.sparkle  { position:fixed; width:6px; height:6px; border-radius:50%; box-shadow:0 0 8px #fff; opacity:.9; z-index:100002; }
+
+/* ------------------- Responsive ------------------- */
+@media (max-width: 500px){
+  header h1 { font-size: 34px; }
+  .tab { padding: 8px 14px; font-size: 18px; margin: 4px; }
+  .tabs { padding: 6px 0; gap: 4px; }
+}
 </style>
 </head>
 
 <body>
-
-<!-- ✅ Invitation Screen -->
+<!-- Invitation Screen -->
 <div id="launch-screen">
   <div class="invite-box">
     <h1>You’ve Been Invited 🎓</h1>
@@ -545,7 +289,6 @@ footer p {
   </div>
 </div>
 
-<!-- ✅ ✅ ✅ YOUR ONLY HEADER (correct one) -->
 <header>
   <h1>Kim’s Graduation Website
     <img src="https://media.tenor.com/eGCjV7lEokoAAAAj/black-bow.gif" alt="black-bow">
@@ -554,7 +297,7 @@ footer p {
   <p>Elegant. Intelligent. Empowered by Jehovah</p>
 </header>
 
-<!-- ✅ Tabs -->
+<!-- Tabs -->
 <div class="tabs">
   <button class="tab" onclick="openTab('home')">Home</button>
   <button class="tab" onclick="openTab('dresscode')">Dress Code</button>
@@ -567,7 +310,7 @@ footer p {
 <div id="main-content">
   <canvas class="journey-bg" id="journey-bg"></canvas>
 
-  <!-- HOME TAB -->
+  <!-- HOME -->
   <div id="home" class="tab-content active">
     <h2>Welcome!</h2>
     <p>Thank you for celebrating this milestone with me! So happy to be able to say that all the obstacles I've overcome were well worth it in the end.</p>
@@ -587,7 +330,8 @@ footer p {
       </p>
     </div>
   </div>
-  <!-- DRESS CODE TAB -->
+
+  <!-- DRESS CODE -->
   <div id="dresscode" class="tab-content">
     <h2>Dress Code</h2>
     <p>
@@ -599,7 +343,7 @@ footer p {
     <img src="dresscode.jpg" alt="Dress Code" style="max-width:80%;border-radius:12px;margin-top:20px;border:2px solid #000;">
   </div>
 
-  <!-- GUESTBOOK TAB -->
+  <!-- GUESTBOOK -->
   <div id="guestbook" class="tab-content">
     <h2>💬 Guestbook</h2>
     <input id="nameInput" type="text" placeholder="Your name..."><br>
@@ -608,7 +352,7 @@ footer p {
     <div id="messages"></div>
   </div>
 
-  <!-- PHOTOS TAB -->
+  <!-- PHOTOS -->
   <div id="photos" class="tab-content">
     <h2>Share a Photo</h2>
     <input type="file" id="photoInput" accept="image/*"><br>
@@ -616,7 +360,7 @@ footer p {
     <div id="gallery"></div>
   </div>
 
-  <!-- WISHLIST TAB -->
+  <!-- WISHLIST -->
   <div id="wishlist" class="tab-content">
     <h2>Gift Registry</h2>
     <p>Thank you so much for your thoughtfulness!</p>
@@ -627,7 +371,7 @@ footer p {
     <p>Monetary gifts are also graciously welcomed and deeply appreciated.</p>
   </div>
 
-  <!-- JOURNEY TAB -->
+  <!-- JOURNEY -->
   <div id="journey" class="tab-content">
     <h2 style="color:white;">🛠️ My Journey</h2>
 
@@ -649,28 +393,36 @@ footer p {
   </div>
 </div>
 
-<!-- LIGHTBOX -->
-<div id="lightbox"><img id="lightbox-img"></div>
+<!-- Lightbox -->
+<div id="lightbox"><img id="lightbox-img" alt=""></div>
 
 <footer>
   <p>"Elegance is intelligence made visible."</p>
   <p>— Celebrating Grace & Code 🎓</p>
 </footer>
 
-<!-- ACHIEVEMENT TOAST -->
-<div id="achievement-toast">
-  <img src="white_trophy.gif" alt="achievement icon">
+<!-- Achievement Toast -->
+<div id="achievement-toast" aria-live="polite">
+  <img src="white_trophy.gif" alt="achievement icon" width="32" height="32">
   <div class="text">
     <p class="title">Achievement Unlocked!</p>
     <p class="name" id="toast-name">Name</p>
   </div>
 </div>
 
+<!-- Popup (old style restored) -->
+<div id="achievement-popup">
+  <div id="achievement-popup-inner">
+    <span id="achievement-popup-title">Achievement Get!</span>
+    <span id="achievement-popup-text"></span>
+  </div>
+</div>
+
+<!-- Achievement Sound -->
 <audio id="achievement-sound" src="levelup.mp3" preload="auto"></audio>
 
-<!-- ✅ SCRIPT STARTS HERE -->
+<!-- ======================= SCRIPTS ======================= -->
 <script type="module">
-
 /* -------------------- Firebase -------------------- */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
@@ -680,7 +432,6 @@ const firebaseConfig = {
   authDomain:"kim-s-grad-website.firebaseapp.com",
   projectId:"kim-s-grad-website"
 };
-
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -694,14 +445,78 @@ const achievements = {
   "Interface Designer": false,
   "Computer Engineer": false
 };
-
 const achievementsList = document.getElementById("achievements-list");
+const achievementSound = document.getElementById("achievement-sound");
 
 function makeIconLetter(letter){
   const el = document.createElement("div");
   el.className="icon";
-  el.textContent = letter;
+  el.textContent = letter || "✓";
   return el;
+}
+
+function playAchievementSound(){
+  if(!achievementSound) return;
+  // Try to play; if blocked, create a quick oscillator fallback
+  achievementSound.currentTime = 0;
+  achievementSound.play().catch(() => {
+    try {
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      const ctx = new Ctx();
+      const o = ctx.createOscillator(); const g = ctx.createGain();
+      o.type = 'square'; o.frequency.value = 660; g.gain.value = 0.08;
+      o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.2);
+    } catch(e){}
+  });
+}
+
+function showToast(name){
+  const toast = document.getElementById("achievement-toast");
+  document.getElementById("toast-name").textContent = name;
+  toast.classList.add("show");
+  setTimeout(()=> toast.classList.remove("show"), 3800);
+}
+
+function popupMessage(text){
+  const pop = document.getElementById("achievement-popup");
+  const label = document.getElementById("achievement-popup-text");
+  if(!pop || !label) return;
+  label.textContent = text;
+  pop.style.display = "block";
+  clearTimeout(popupMessage._t);
+  popupMessage._t = setTimeout(()=> pop.style.display = "none", 2600);
+}
+
+function spawnConfettiAndSparkles(){
+  for(let i=0;i<22;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left = (window.innerWidth-200 + Math.random()*180) + "px";
+    c.style.top = (80 + Math.random()*120) + "px";
+    document.body.appendChild(c);
+    const fall = [
+      { transform: `translateY(0) rotate(0deg)`, opacity:1 },
+      { transform: `translateY(${80 + Math.random()*120}px) rotate(${Math.random()*360}deg)`, opacity:0 }
+    ];
+    const dur = 900 + Math.random()*900;
+    c.animate(fall, { duration: dur, easing: 'cubic-bezier(.2,.6,.2,1)' });
+    setTimeout(()=>c.remove(), dur+50);
+
+    if(Math.random()<0.6){
+      const s=document.createElement("div");
+      s.className="sparkle";
+      s.style.left = (window.innerWidth-200 + Math.random()*180) + "px";
+      s.style.top  = (80 + Math.random()*120) + "px";
+      document.body.appendChild(s);
+      const sparkleAnim = [
+        { transform: 'scale(0.6)', opacity: 1 },
+        { transform: 'scale(1.6)', opacity: 0 }
+      ];
+      const sDur = 600 + Math.random()*600;
+      s.animate(sparkleAnim,{ duration: sDur, easing: 'ease-out' });
+      setTimeout(()=>s.remove(), sDur + 200);
+    }
+  }
 }
 
 function unlockAchievement(name){
@@ -709,19 +524,21 @@ function unlockAchievement(name){
   achievements[name] = true;
 
   const tile = document.createElement("div");
-  tile.className="achievement";
+  tile.className = "achievement";
   const icon = makeIconLetter(name[0]);
   const label = document.createElement("div");
-  label.className="label";
+  label.className = "label";
   label.textContent = name;
-
   tile.appendChild(icon);
   tile.appendChild(label);
   achievementsList.appendChild(tile);
 
-  showToast(name);
-  spawnConfetti();
+  playAchievementSound();   // ✅ restored sound
+  showToast(name);          // ✅ toast
+  popupMessage(name);       // ✅ popup banner
+  spawnConfettiAndSparkles();
 
+  // Hidden achievement check
   if(
     achievements["Hello, World!"] &&
     achievements["Data Collector"] &&
@@ -735,52 +552,27 @@ function unlockAchievement(name){
   }
 }
 
-function showToast(name){
-  const toast = document.getElementById("achievement-toast");
-  document.getElementById("toast-name").textContent = name;
-  toast.classList.add("show");
-  setTimeout(()=> toast.classList.remove("show"), 3800);
-}
-
-function spawnConfetti(){
-  for(let i=0;i<20;i++){
-    const c=document.createElement("div");
-    c.className="confetti";
-    c.style.left = (window.innerWidth-200 + Math.random()*150) + "px";
-    c.style.top = (80 + Math.random()*120) + "px";
-    document.body.appendChild(c);
-
-    setTimeout(()=> c.remove(), 1200);
-  }
-}
-
 /* -------------------- Tabs -------------------- */
-window.openTab=function(id){
+window.openTab = function(id){
   document.querySelectorAll(".tab-content").forEach(t=> t.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+  const target = document.getElementById(id);
+  if(target){ target.classList.add("active"); }
 
-  if(id==="journey"){
-    document.getElementById("main-content").classList.add("journey-active");
-  } else {
-    document.getElementById("main-content").classList.remove("journey-active");
-  }
+  const main = document.getElementById("main-content");
+  if(id==="journey") main.classList.add("journey-active");
+  else main.classList.remove("journey-active");
 
   if(id==="dresscode") unlockAchievement("Interface Designer");
-  if(id==="wishlist") unlockAchievement("System Scanner");
+  if(id==="wishlist")  unlockAchievement("System Scanner");
 };
 
 /* -------------------- Guestbook -------------------- */
 window.postMessage = async function(){
-  const name = document.getElementById("nameInput").value || "Anonymous";
-  const message = document.getElementById("messageInput").value;
-
+  const name = (document.getElementById("nameInput").value || "Anonymous").trim();
+  const message = (document.getElementById("messageInput").value || "").trim();
   if(!message) return;
 
-  await addDoc(collection(db,"guestbook"),{
-    name,
-    text: message,
-    date: new Date().toISOString()
-  });
+  await addDoc(collection(db,"guestbook"),{ name, text: message, date: new Date().toISOString() });
 
   document.getElementById("nameInput").value = "";
   document.getElementById("messageInput").value = "";
@@ -792,10 +584,8 @@ window.postMessage = async function(){
 async function renderMessages(){
   const container = document.getElementById("messages");
   container.innerHTML="";
-
-  const q=query(collection(db,"guestbook"),orderBy("date","desc"));
-  const snap=await getDocs(q);
-
+  const qy = query(collection(db,"guestbook"), orderBy("date","desc"));
+  const snap = await getDocs(qy);
   snap.forEach(doc=>{
     const d=doc.data();
     const div=document.createElement("div");
@@ -820,71 +610,72 @@ window.uploadPhoto = async function(){
   formData.append("upload_preset", preset);
 
   const uploadBtn = document.getElementById("uploadBtn");
-  uploadBtn.disabled = true;
-  uploadBtn.textContent = "Uploading...";
+  uploadBtn.disabled = true; uploadBtn.textContent = "Uploading...";
 
   try{
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-      method:"POST",
-      body: formData
-    });
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, { method:"POST", body: formData });
     const data = await res.json();
+    if(!res.ok || !data.secure_url) throw new Error(data.error?.message || "Upload failed");
 
     const img = document.createElement("img");
-    img.src=data.secure_url;
+    img.src = data.secure_url;
     document.getElementById("gallery").prepend(img);
 
-    await addDoc(collection(db,"photos"),{
-      url:data.secure_url,
-      date:new Date().toISOString()
-    });
+    await addDoc(collection(db,"photos"),{ url:data.secure_url, date:new Date().toISOString() });
 
     uploadBtn.textContent="Upload Photo 📸";
     uploadBtn.disabled=false;
 
     unlockAchievement("Data Collector");
     setupLightbox();
-
   } catch(err){
     alert("Upload failed!");
+    uploadBtn.textContent="Upload Photo 📸";
     uploadBtn.disabled=false;
   }
 };
 
-function setupLightbox(){
-  const lb=document.getElementById("lightbox");
-  const lbImg=document.getElementById("lightbox-img");
-
-  document.querySelectorAll("#gallery img").forEach(img=>{
-    img.onclick=()=>{
-      lb.style.display="flex";
-      lbImg.src=img.src;
-    };
+async function renderGallery(){
+  const gallery = document.getElementById("gallery");
+  gallery.innerHTML = "";
+  const qy = query(collection(db,"photos"), orderBy("date","desc"));
+  const snap = await getDocs(qy);
+  snap.forEach(doc=>{
+    const img = document.createElement("img");
+    img.src = doc.data().url;
+    gallery.appendChild(img);
   });
-
-  lb.onclick=(e)=>{
-    if(e.target!==lbImg) lb.style.display="none";
-  };
+  setupLightbox();
 }
 
-/* -------------------- Timeline Points -------------------- */
+function setupLightbox(){
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightbox-img");
+  document.querySelectorAll("#gallery img").forEach(img=>{
+    img.onclick = ()=>{ lb.style.display="flex"; lbImg.src=img.src; };
+  });
+  lb.onclick = (e)=>{ if(e.target!==lbImg) lb.style.display="none"; };
+}
+
+/* -------------------- Timeline Hover -------------------- */
 document.querySelectorAll(".point").forEach(point=>{
   point.addEventListener("mouseenter",()=>{
-    document.getElementById("journey-img").src = point.dataset.img;
-    document.getElementById("journey-desc").textContent = point.dataset.desc;
-    document.getElementById("journey-img").style.display="block";
+    const img = document.getElementById("journey-img");
+    const desc = document.getElementById("journey-desc");
+    img.src = point.dataset.img;
+    desc.textContent = point.dataset.desc;
+    img.style.display="block";
     unlockAchievement("Process Tracker");
   });
-
   point.addEventListener("mouseleave",()=>{
     document.getElementById("journey-img").style.display="none";
     document.getElementById("journey-desc").textContent="";
   });
 });
 
-// -------------------- Cursor trail (kept intact) --------------------
+/* -------------------- Cursor trail (bow) -------------------- */
 const blackBow='https://media.tenor.com/eGCjV7lEokoAAAAj/black-bow.gif';
-const whiteBow='invertedwhitebow.gif'; // keep this in your folder or change to a hosted white-gif
+const whiteBow='invertedwhitebow.gif'; // ensure this file exists in your repo
 
 function getBgColor(elem){
   while(elem){
@@ -895,17 +686,20 @@ function getBgColor(elem){
   return 'rgb(255,255,255)';
 }
 function getLuminance(rgb){
-  const m = rgb.match(/(\d+),\s*(\d+),\s*(\d+)/);
+  const m = rgb?.match?.(/(\d+),\s*(\d+),\s*(\d+)/);
   if(!m) return 255;
-  const r = parseInt(m[1]), g = parseInt(m[2]), b = parseInt(m[3]);
+  const r = +m[1], g = +m[2], b = +m[3];
   return 0.299*r + 0.587*g + 0.114*b;
 }
-document.addEventListener('mousemove', e => {
+function dropBow(x, y){
   const img = document.createElement('img');
-  img.src = (getLuminance(getBgColor(document.elementFromPoint(e.clientX, e.clientY))) < 128) ? whiteBow : blackBow;
+  const under = document.elementFromPoint(x, y);
+  const src = (getLuminance(getBgColor(under)) < 128) ? whiteBow : blackBow;
+  img.src = src;
+  img.alt = "";
   img.style.position = 'absolute';
-  img.style.left = e.pageX - 12 + 'px';
-  img.style.top = e.pageY - 12 + 'px';
+  img.style.left = (window.scrollX + x - 10) + 'px';  /* slightly closer to finger */
+  img.style.top  = (window.scrollY + y - 10) + 'px';
   img.style.width = '25px';
   img.style.height = '25px';
   img.style.pointerEvents = 'none';
@@ -913,109 +707,55 @@ document.addEventListener('mousemove', e => {
   img.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
   img.style.opacity = '1';
   document.body.appendChild(img);
-  setTimeout(()=>{ img.style.opacity='0'; img.style.transform='scale(0.6) rotate(20deg)'; setTimeout(()=>img.remove(),1000); }, 0);
-});
-
+  requestAnimationFrame(()=>{  /* animate next frame */
+    img.style.opacity='0';
+    img.style.transform='scale(0.6) rotate(20deg)';
+  });
+  setTimeout(()=> img.remove(), 1000);
+}
+document.addEventListener('mousemove', e => dropBow(e.clientX, e.clientY));
 document.addEventListener('touchmove', e => {
-  const touch = e.touches[0];
-  if(!touch) return;
+  const t = e.touches[0]; if(!t) return;
+  dropBow(t.clientX, t.clientY);
+}, { passive: true });
 
-  const img = document.createElement('img');
-  img.src = (getLuminance(getBgColor(document.elementFromPoint(touch.clientX, touch.clientY))) < 128) ? whiteBow : blackBow;
-  img.style.position = 'absolute';
-  img.style.left = touch.pageX - 12 + 'px';
-  img.style.top = touch.pageY - 12 + 'px';
-  img.style.width = '25px';
-  img.style.height = '25px';
-  img.style.pointerEvents = 'none';
-  img.style.zIndex = 9999;
-  img.style.transition = 'transform 1s ease-out, opacity 1s ease-out';
-  img.style.opacity = '1';
-  document.body.appendChild(img);
-  setTimeout(() => {
-    img.style.opacity = '0';
-    img.style.transform = 'scale(0.6) rotate(20deg)';
-    setTimeout(() => img.remove(), 1000);
-  }, 0);
-}, { passive: true }); // passive: true allows finger scrolling
-
-
-// -------------------- Timeline points (unlock on hover) --------------------
-const timelinePoints = document.querySelectorAll('.point');
-timelinePoints.forEach(point => {
-  point.addEventListener('mouseenter', () => {
-    const img = document.getElementById('journey-img');
-    const desc = document.getElementById('journey-desc');
-    img.src = point.getAttribute('data-img');
-    desc.textContent = point.getAttribute('data-desc');
-    img.style.display = 'block';
-    unlockAchievement('Process Tracker');
-  });
-
-  point.addEventListener('mouseleave', () => {
-    const img = document.getElementById('journey-img');
-    const desc = document.getElementById('journey-desc');
-    img.style.display = 'none';
-    desc.textContent = '';
-  });
-});
-
+/* -------------------- Timeline LEDs (pulse) -------------------- */
 function positionLEDsInsidePoints() {
-  const points = document.querySelectorAll('.point');
-
-  // Remove old LEDs
   document.querySelectorAll('.point .timeline-led').forEach(l => l.remove());
-
-  points.forEach(point => {
+  document.querySelectorAll('.point').forEach(point => {
     const led = document.createElement('div');
     led.className = 'timeline-led';
-    led.style.position = 'absolute';
-    led.style.zIndex = '0'; // behind point
-    led.style.width = '16px';
-    led.style.height = '16px';
-    
-    // Position LED centered inside point
-    led.style.left = '50%';
-    led.style.top = '50%';
-    led.style.transform = 'translate(-50%, -50%)';
-
-    point.appendChild(led); // append LED inside the point
+    point.appendChild(led);
   });
 }
-
 positionLEDsInsidePoints();
 window.addEventListener('resize', positionLEDsInsidePoints);
 let pulseTime = 0;
-function pulseTimelineLEDsSmooth(timestamp){
+function pulseTimelineLEDsSmooth(){
   const leds = document.querySelectorAll('.timeline-led');
-  if(leds.length === 0) return;
-
-  pulseTime += 0.02; // speed of pulse
+  pulseTime += 0.02;
   leds.forEach((led, i)=>{
-    const phase = (i / leds.length) * Math.PI * 2;
+    const phase = (i / (leds.length||1)) * Math.PI * 2;
     const scale = 1 + 0.3 * Math.sin(pulseTime + phase);
     const opacity = 0.3 + 0.7 * Math.sin(pulseTime + phase) ** 2;
     led.style.transform = `translate(-50%, -50%) scale(${scale})`;
     led.style.opacity = opacity;
-    // optional: animate box-shadow for glow intensity
     const glow = 6 + 6 * Math.sin(pulseTime + phase);
     led.style.boxShadow = `0 0 ${14+glow}px ${glow}px rgba(255,255,255,0.5)`;
   });
-
   requestAnimationFrame(pulseTimelineLEDsSmooth);
 }
-
 requestAnimationFrame(pulseTimelineLEDsSmooth);
 
-
-// -------------------- Canvas 'PCB' (keeps visuals) --------------------
+/* -------------------- Canvas 'PCB' -------------------- */
 const canvas = document.getElementById('journey-bg');
 const ctx = canvas?.getContext ? canvas.getContext('2d') : null;
 let particles = [];
 function resizeCanvas(){
   if(!canvas) return;
-  canvas.width = document.getElementById('main-content').offsetWidth;
-  canvas.height = document.getElementById('main-content').offsetHeight;
+  const main = document.getElementById('main-content');
+  canvas.width = main.offsetWidth;
+  canvas.height = main.offsetHeight;
   generateParticles();
   drawPCB();
 }
@@ -1033,8 +773,8 @@ function drawPCB(){
     ctx.strokeStyle = 'rgba(255,255,255,' + (0.9 + Math.random()*0.12) + ')';
     ctx.lineWidth = 1 + Math.random()*1;
     ctx.beginPath();
-    if(p.vertical) ctx.moveTo(p.x,p.y), ctx.lineTo(p.x,p.y+p.length);
-    else ctx.moveTo(p.x,p.y), ctx.lineTo(p.x+p.length,p.y);
+    if(p.vertical) { ctx.moveTo(p.x,p.y); ctx.lineTo(p.x,p.y+p.length); }
+    else { ctx.moveTo(p.x,p.y); ctx.lineTo(p.x+p.length,p.y); }
     ctx.stroke();
   }
 }
@@ -1047,61 +787,58 @@ function animatePCB(){
   requestAnimationFrame(animatePCB);
 }
 animatePCB();
-// -------------------- Init on load --------------------
-window.onload = () => {
-  renderMessages();
-  renderGallery();
-  resizeCanvas();
 
-};
-// --- Invitation Launch Screen ---
+/* -------------------- Sidebar behavior -------------------- */
+const sidebar = document.getElementById("achievement-sidebar");
+const toggle = document.getElementById("sidebar-toggle");
+
+// Desktop: hover expands via CSS (no JS needed)
+// Mobile: tap-to-open/close using class toggle
+function isMobile(){ return window.matchMedia("(max-width: 600px)").matches; }
+
+function handleSidebarTap(){
+  if(!isMobile()) return;
+  // toggle class; also stop clicks from leaking
+  sidebar.classList.toggle("mobile-open");
+}
+
+if(toggle){
+  toggle.addEventListener("click", (e)=>{ e.stopPropagation(); handleSidebarTap(); });
+}
+// Also let tapping the bar itself open on mobile
+sidebar.addEventListener("click", (e)=>{
+  if(!isMobile()) return; // desktop uses hover
+  // ignore clicks on links inside when already open
+  if(sidebar.classList.contains("mobile-open") && e.target !== toggle) return;
+  handleSidebarTap();
+});
+
+/* -------------------- Init -------------------- */
+async function init(){
+  await renderMessages();
+  await renderGallery();
+  resizeCanvas();
+}
+window.addEventListener('load', init);
+
+/* -------------------- Launch Screen -------------------- */
 const launchScreen = document.getElementById('launch-screen');
 launchScreen.addEventListener('click', () => {
   launchScreen.style.animation = 'fadeOut 1s forwards';
   setTimeout(() => {
     launchScreen.remove();
-    unlockAchievement('Hello, World!'); // trigger welcome achievement
+    unlockAchievement('Hello, World!');
   }, 500);
 });
-/* ✅ Mobile tap-to-open sidebar */
-const sidebar = document.getElementById("achievement-sidebar");
-
-function isMobile() {
-  return window.matchMedia("(max-width: 600px)").matches;
-}
-
-sidebar.addEventListener("click", () => {
-  if (!isMobile()) return;  // desktop uses hover only
-
-  sidebar.classList.toggle("mobile-open");
-});
-
 </script>
-<!-- 🎮 Minecraft-style Achievement Sidebar -->
+
+<!-- Achievement Sidebar (after script so DOM exists for IDs) -->
 <div id="achievement-sidebar">
+  <div id="sidebar-toggle" aria-label="Open achievements"></div>
   <div id="achievements-unlocked">
     <h3>Achievements</h3>
     <div id="achievements-list"></div>
   </div>
-  <div id="sidebar-toggle"></div>
-  <div id="achievement-list"></div>
-</div>
-
-<!-- Popup for unlock -->
-<div id="achievement-popup">
-  <div id="achievement-popup-inner">
-    <span id="achievement-popup-title">Achievement Get!</span>
-    <span id="achievement-popup-text"></span>
-  </div>
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
