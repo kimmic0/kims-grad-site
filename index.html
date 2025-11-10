@@ -238,17 +238,45 @@ footer p { animation:neonPulse 1.8s ease-in-out infinite alternate; margin:5px 0
 
 /* ------------------- Achievement Toast (Minecraft-like) ------------------- */
 #achievement-toast {
-  position:fixed; left:50%; top:72px; transform:translateX(-50%);
-  background:#1f1f1f; border:4px solid #000; color:#fff;
-  display:flex; align-items:center; gap:12px;
-  padding:8px 14px; border-radius:4px; font-family:monospace;
-  box-shadow:0 0 10px #000; opacity:0; z-index:100000;
-  transition:opacity .25s ease, top .25s ease;
+  position: fixed;
+  left: 50%;
+  top: 72px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, #222, #000);
+  border: 3px solid #888;
+  border-radius: 6px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  z-index: 100000;
+  transition: opacity .25s ease, top .25s ease;
+  font-family: "Press Start 2P", monospace;
+  color: white;
+  box-shadow: 0 0 8px #777;
   image-rendering: pixelated;
 }
-#achievement-toast .text .title{ font-size:12px; color:#cfcfcf; margin:0; }
-#achievement-toast .text .name{ font-size:16px; margin:0; font-weight:700; color:#fff; }
-#achievement-toast.show{ opacity:1; top:92px; }
+#achievement-toast.show {
+  opacity: 1;
+  top: 92px;
+  animation: slideIn 0.4s ease-out;
+}
+
+#achievement-toast .text .title {
+  font-size: 10px;
+  color: #bbb;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+#achievement-toast .text .name {
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  text-shadow: 0 0 4px #aaa;
+}
 
 /* ------------------- Popup (Old style restored) ------------------- */
 #achievement-popup {
@@ -403,20 +431,13 @@ footer p { animation:neonPulse 1.8s ease-in-out infinite alternate; margin:5px 0
 
 <!-- Achievement Toast -->
 <div id="achievement-toast" aria-live="polite">
-  <img src="white_trophy.gif" alt="achievement icon" width="32" height="32">
+ <img src="white_trophy.gif" alt="achievement icon" style="width:32px;height:32px;image-rendering:pixelated;">
   <div class="text">
     <p class="title">Achievement Unlocked!</p>
     <p class="name" id="toast-name">Name</p>
   </div>
 </div>
 
-<!-- Popup (old style restored) -->
-<div id="achievement-popup">
-  <div id="achievement-popup-inner">
-    <span id="achievement-popup-title">Achievement Get!</span>
-    <span id="achievement-popup-text"></span>
-  </div>
-</div>
 
 <!-- Achievement Sound -->
 <audio id="achievement-sound" src="levelup.mp3" preload="auto"></audio>
@@ -535,7 +556,6 @@ function unlockAchievement(name){
 
   playAchievementSound();   // ✅ restored sound
   showToast(name);          // ✅ toast
-  popupMessage(name);       // ✅ popup banner
   spawnConfettiAndSparkles();
 
   // Hidden achievement check
@@ -842,3 +862,4 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
