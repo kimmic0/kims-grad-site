@@ -323,6 +323,15 @@ footer p {font-size: 1.2em; color: var(--bw-4); margin: 5px 0; animation: neonPu
   h2 { font-size: 3rem; }
   p { font-size: 1.6rem; }
   .tab { font-size: 17px; padding: 6px 12px; }
+    .tab-content {
+    width: 100vw; 
+    margin-left: calc(50% - 50vw); /* ensures full-bleed on small screens */
+    padding: 20px 10px; /* adjust vertical and horizontal padding */
+    box-sizing: border-box;
+  }
+    #main-content {
+    padding: 0;
+  }
   input, textarea { width: 95%; }
   #gallery img { max-width: 120px; }
   #journey-display img { max-width: 95%; }
@@ -1025,6 +1034,7 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
 
 
