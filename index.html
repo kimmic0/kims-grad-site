@@ -113,7 +113,7 @@ h2 {  font-size: 38px;  font-family: 'Alumni Sans', sans-serif;  margin-bottom: 
 .tabs { font-family: 'Asap Condensed'; display:flex; justify-content:center; flex-wrap:wrap; background-color:var(--bw-1); padding:10px 0; z-index:10; position:relative; }
 .tab { font-family: 'Asap Condensed';background:linear-gradient(120deg,var(--bw-4) 0%, #ccc 30%, var(--bw-4) 50%); background-size:200% auto; color:var(--bw-1); padding:10px 25px; border:2px solid var(--bw-1); margin:5px; border-radius:30px; font-size:24px; cursor:pointer; transition:all .3s ease; }
 .tab:hover { animation:shine 1.2s linear infinite; transform:scale(1.05); }
-.tab-content { display:none; padding:30px; animation:fadeIn .4s ease; }
+.tab-content {  width: 100vw; max-width: 100%; display:none; padding:20px 10px;margin-left: calc(50% - 50vw); animation:fadeIn .4s ease;box-sizing: border-box; }
 .active { display:block; }
 @keyframes shine { 0%{background-position:-200% center;}100%{background-position:200% center;} }
 @keyframes fadeIn { from{opacity:0} to{opacity:1} }
@@ -323,13 +323,13 @@ footer p {font-size: 1.2em; color: var(--bw-4); margin: 5px 0; animation: neonPu
   h2 { font-size: 3rem; }
   p { font-size: 1.6rem; }
   .tab { font-size: 17px; padding: 6px 12px; }
-    .tab-content {
+  .tab-content {
     width: 100vw; 
     margin-left: calc(50% - 50vw); /* ensures full-bleed on small screens */
     padding: 20px 10px; /* adjust vertical and horizontal padding */
     box-sizing: border-box;
   }
-    #main-content {
+  #main-content {
     padding: 0;
   }
   input, textarea { width: 95%; }
@@ -542,7 +542,7 @@ footer {
   <strong>Kim</strong></strong></p>
   <!-- Smooth transition: slight fade or line -->
   <hr style="width:50px; border:1px solid #ccc; margin:10px auto 20px;">
-  
+
   <p style="font-size:2rem; font-family:'Alumni Sans', sans-serif; color:#222;">
     You are cordially invited to celebrate my graduation!<br>
   <strong>Venue location will be shared privately upon RSVP:</strong><br>
@@ -1034,6 +1034,7 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
 
 
