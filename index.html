@@ -480,11 +480,6 @@ footer p {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-/* ✅ Prevent sidebar from blocking mobile taps */
-#achievement-sidebar,
-#achievement-sidebar * {
-  pointer-events: none !important;
-}
 
 /* ✅ Re-enable interaction ONLY on desktop hover */
 @media (hover: hover) {
@@ -506,15 +501,7 @@ footer p {
     gap: 4px;
   }
 }
-/* ✅ Mobile: sidebar should NEVER block taps */
-@media (max-width: 900px) {
-  #achievement-sidebar {
-    pointer-events: none !important;
-  }
-  #achievement-sidebar * {
-    pointer-events: none !important;
-  }
-}
+
 
 /* ✅ Desktop: sidebar works normally */
 @media (hover: hover) {
@@ -523,7 +510,21 @@ footer p {
     pointer-events: auto !important;
   }
 }
+/* ✅ Desktop hover + sidebar expansion enabled */
+@media (hover: hover) and (min-width: 600px) {
+  #achievement-sidebar,
+  #achievement-sidebar * {
+    pointer-events: auto !important;
+  }
+}
 
+/* ✅ MOBILE ONLY — shrink sidebar + disable hover expansion */
+@media (max-width: 600px) {
+  #achievement-sidebar {
+    width: 26px !important;
+    padding: 4px 0 !important;
+  }
+}
 /* End of CSS */
 </style>
 </head>
@@ -1078,6 +1079,7 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
 
 
