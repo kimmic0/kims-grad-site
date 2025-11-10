@@ -487,13 +487,13 @@ footer {
       margin: 0;
     border-top: 0;
 }
-#home img[src*="Sailor Moon"] {
-  display: block; /* only show on home */
+#home #sailor-moon {
+  display: block; /* show only on home */
   margin: 20px auto;
 }
 
-.tab-content:not(#home) img[src*="Sailor Moon"] {
-  display: none !important; /* hide everywhere else */
+.tab-content:not(#home) #sailor-moon {
+  display: none !important; /* hide on all other tabs */
 }
 </style>
 </head>
@@ -1036,6 +1036,7 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
 
 
