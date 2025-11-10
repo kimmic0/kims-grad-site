@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>Kim’s Graduation 🎓</title>
-
+ <link rel="icon" href="comp.svg" type="image/svg">
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Asap+Condensed&family=Monsieur+La+Doulaise&family=Alumni+Sans&family=Silkscreen&family=Libre+Bodoni:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -314,6 +314,16 @@ footer p { animation:neonPulse 1.8s ease-in-out infinite alternate; margin:5px 0
   margin: 10px auto;
   display: block;
 }
+/* Sailor Moon image sizing */
+.sailor-moon-img {
+  width: 220px;        /* ✅ Not too big, not too small */
+  max-width: 70%;      /* ✅ Responsive on mobile */
+  height: auto;
+  display: block;
+  margin: 20px auto 10px;
+  border-radius: 14px;
+  border: 2px solid var(--bw-1);
+}
 
 </style>
 </head>
@@ -359,6 +369,8 @@ footer p { animation:neonPulse 1.8s ease-in-out infinite alternate; margin:5px 0
       <p style="font-style:italic;font-family:'Alumni Sans';">
         <strong>Love,<br>Kim</strong>
       </p>
+      <img src="sailormoon.webp" alt="Sailor Moon"
+     class="sailor-moon-img">
       <hr style="width:50px;border:1px solid #ccc;margin:10px auto 20px;">
       <p style="font-size:2rem;color:#222;">
         You are cordially invited to celebrate my graduation!<br>
@@ -876,6 +888,7 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
 
 
