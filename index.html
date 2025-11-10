@@ -487,6 +487,14 @@ footer {
       margin: 0;
     border-top: 0;
 }
+#home img[src*="Sailor Moon"] {
+  display: block; /* only show on home */
+  margin: 20px auto;
+}
+
+.tab-content:not(#home) img[src*="Sailor Moon"] {
+  display: none !important; /* hide everywhere else */
+}
 </style>
 </head>
 <body>
@@ -571,24 +579,25 @@ footer {
   <p>Thank you so much for your thoughtfulness! For those wishing to honor this special occasion with a gift, I have lovingly curated an <a href="https://www.amazon.com/hz/wishlist/ls/FB17XEUSTE2K?ref_=wl_share" target="_blank">Amazon Wishlist</a>.</p>
   <p>For your convenience, monetary gifts are also graciously and warmly welcomed, should you prefer this option.</p>
 </div>
-  <div id="journey" class="tab-content">
-    <h2 style="color:white;">🛠️ My Journey</h2>
-      <!-- ⬇️ Place the timeline container right here -->
-      <div class="timeline-container">
-        <div class="timeline">
-          <div class="point" data-img="journey2.jpg" data-desc="2020 – Engineering Fundamentals"></div>
-          <div class="point" data-img="journey3.jpg" data-desc="2021 – Coding Foundations 💻"></div>
-          <div class="point" data-img="journey4.jpg" data-desc="2022 – Digital Logic Design & Data Structures"></div>
-          <div class="point" data-img="journey5.jpg" data-desc="2023 – Circuits & Operating Systems"></div>
-          <div class="point" data-img="journey6.jpg" data-desc="2024 – Electronics & Microcontrollers"></div>
-          <div class="point" data-img="journey7.jpg" data-desc="2025 – Graduation! 🎓"></div>
-        </div>
-      </div>
+<div id="journey" class="tab-content">
+  <h2 style="color:white;">🛠️ My Journey</h2>
+
+  <!-- Timeline container -->
+  <div class="timeline-container">
+    <div class="timeline">
+      <div class="point" data-img="journey2.jpg" data-desc="2020 – Engineering Fundamentals"></div>
+      <div class="point" data-img="journey3.jpg" data-desc="2021 – Coding Foundations 💻"></div>
+      <div class="point" data-img="journey4.jpg" data-desc="2022 – Digital Logic Design & Data Structures"></div>
+      <div class="point" data-img="journey5.jpg" data-desc="2023 – Circuits & Operating Systems"></div>
+      <div class="point" data-img="journey6.jpg" data-desc="2024 – Electronics & Microcontrollers"></div>
+      <div class="point" data-img="journey7.jpg" data-desc="2025 – Graduation! 🎓"></div>
     </div>
-    <div id="journey-display">
-      <img id="journey-img" src="" alt="">
-      <p id="journey-desc"></p>
-    </div>
+  </div>
+
+  <!-- Move journey display INSIDE the journey tab -->
+  <div id="journey-display">
+    <img id="journey-img" src="" alt="">
+    <p id="journey-desc"></p>
   </div>
 </div>
 <!-- Lightbox -->
@@ -1027,6 +1036,7 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
 
 
