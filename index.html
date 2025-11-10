@@ -304,6 +304,17 @@ footer p { animation:neonPulse 1.8s ease-in-out infinite alternate; margin:5px 0
   .tab { padding: 8px 14px; font-size: 18px; margin: 4px; }
   .tabs { padding: 6px 0; gap: 4px; }
 }
+  /* ✅ Make uploaded photos scale correctly on mobile */
+#gallery img {
+  max-width: 90%;
+  width: auto;
+  height: auto;
+  border-radius: 15px;
+  border: 2px solid var(--bw-1);
+  margin: 10px auto;
+  display: block;
+}
+
 </style>
 </head>
 
@@ -862,4 +873,5 @@ launchScreen.addEventListener('click', () => {
 </div>
 </body>
 </html>
+
 
